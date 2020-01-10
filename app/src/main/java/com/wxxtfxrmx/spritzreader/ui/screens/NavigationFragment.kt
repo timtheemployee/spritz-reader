@@ -20,7 +20,7 @@ class NavigationFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        spritzView.text = "Привет"
         navigation.setOnNavigationItemSelectedListener { item ->
             val fragment = when (item.itemId) {
                 R.id.library -> LibraryFragment.newInstance()
