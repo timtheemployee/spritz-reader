@@ -4,7 +4,9 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Paint.ANTI_ALIAS_FLAG
+import android.graphics.Rect
 import android.util.AttributeSet
+import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import com.wxxtfxrmx.spritzreader.R
@@ -16,28 +18,26 @@ class SpritzView @JvmOverloads constructor(
     defAttrStyle: Int = 0
 ) : View(context, attrs, defStyleAttr, defAttrStyle) {
 
-    private companion object {
-        const val EVEN_DIVIDER = 2
-    }
-
     var text: String? = null
         set(value) {
             value?.let {
-                applyFocusPosition(it)
+                spritzString = SpritzString(it)
                 field = value
             }
         }
 
-    private var focusPosition: Int = 0
+    private var spritzString: SpritzString? = null
 
     private val focusPaint: Paint
-    private val paint: Paint
+    private val commonPaint: Paint
+
 
     private val defaultTextSize: Float
     private val defaultVerticalPadding: Float
 
     init {
-        val attributes = context.obtainStyledAttributes(attrs, R.styleable.SpritzView, defStyleAttr, 0)
+        val attributes =
+            context.obtainStyledAttributes(attrs, R.styleable.SpritzView, defStyleAttr, 0)
 
         defaultTextSize = attributes.getDimension(R.styleable.SpritzView_textSize, 0f)
 
@@ -46,7 +46,7 @@ class SpritzView @JvmOverloads constructor(
             textSize = defaultTextSize
         }
 
-        paint = Paint(ANTI_ALIAS_FLAG).apply {
+        commonPaint = Paint(ANTI_ALIAS_FLAG).apply {
             color = attributes.getColor(R.styleable.SpritzView_textColor, 0)
             textSize = defaultTextSize
         }
@@ -86,45 +86,25 @@ class SpritzView @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
         canvas?.apply {
+            spritzString?.let { spritzString ->
+                val focusTextSize = focusPaint.measureText(spritzString.focus()) / 2
+                val focusXPosition = width / 2f - focusTextSize
+                val focusYPosition = height / 2f + focusTextSize
 
-            text?.let {
-                val start = it.start()
-                drawText(start, startX(start), middleY(), paint)
-                drawText(it.focus(), middleX(), middleY(), focusPaint)
-                drawText(it.end(), endX(middleX()), middleY(), paint)
+                drawLine(width / 2f, 0f, width / 2f, height.toFloat(), commonPaint)
+                drawLine(0f, height / 2f, width.toFloat(), height / 2f, commonPaint)
+                drawText(spritzString.focus(), focusXPosition, focusYPosition, focusPaint)
+                drawText(spritzString.start(), focusXPosition - commonPaint.measureText(spritzString.start()), focusYPosition, commonPaint)
+                drawText(spritzString.end(), focusXPosition + commonPaint.measureText(spritzString.focus()), focusYPosition, commonPaint)
             }
         }
     }
 
-    private fun middleX(): Float =
-        (width / 2) - defaultTextSize / 2
-
-    private fun middleY(): Float =
-        (height / 2).toFloat()
-
-    private fun startX(startText: String): Float =
-        middleX() - startText.length * (defaultTextSize - 1)
-
-    private fun endX(focusPosition: Float): Float =
-        focusPosition + defaultTextSize
-
-    private fun String.focus(): String =
-        this[focusPosition].toString()
-
-    private fun String.start(): String =
-        this.substring(0, focusPosition)
-
-    private fun String.end(): String =
-        this.substring(focusPosition + 1)
-
-    private fun applyFocusPosition(text: String) {
-        focusPosition = if (text.length % EVEN_DIVIDER == 0) {
-            (text.length / EVEN_DIVIDER) - 1
-        } else {
-            (text.length - 1 / EVEN_DIVIDER) - 1
-        }
-    }
 
     private fun Float.dpToPx(context: Context): Float =
-        TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, this, context.resources.displayMetrics)
+        TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            this,
+            context.resources.displayMetrics
+        )
 }
