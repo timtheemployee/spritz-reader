@@ -7,13 +7,13 @@
         <attr name="textSize" format="dimension" />
     </declare-styleable>
 
-    <style name="Widget.SpritzView.Light" parent="@android:style/Widget">
+    <style name="Widget.SpritzView.Dark" parent="@android:style/Widget">
         <item name="focusColor">@color/colorPrimary</item>
         <item name="textColor">@color/colorWhite</item>
         <item name="textSize">32sp</item>
     </style>
 
-    <style name="Widget.SpritzView.Dark" parent="@android:style/Widget">
+    <style name="Widget.SpritzView.Light" parent="@android:style/Widget">
         <item name="focusColor">@color/colorPrimary</item>
         <item name="textColor">@color/colorBlack</item>
         <item name="textSize">32sp</item>

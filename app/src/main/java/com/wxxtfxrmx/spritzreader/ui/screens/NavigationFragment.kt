@@ -1,6 +1,7 @@
 package com.wxxtfxrmx.spritzreader.ui.screens
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.wxxtfxrmx.spritzreader.R
@@ -20,6 +21,17 @@ class NavigationFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val handler = Handler()
+
+
+        val largeText = getString(R.string.some_large_text).split(" ")
+
+        largeText.forEachIndexed { index, item ->
+            handler.postDelayed({
+                spritzView.text = item
+            }, 1000L * index + 1)
+        }
 
         navigation.setOnNavigationItemSelectedListener { item ->
             val fragment = when (item.itemId) {

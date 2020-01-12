@@ -4,11 +4,10 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Paint.ANTI_ALIAS_FLAG
-import android.graphics.Rect
 import android.util.AttributeSet
-import android.util.Log
 import android.util.TypedValue
 import android.view.View
+import com.wxxtfxrmx.spritzreader.BuildConfig
 import com.wxxtfxrmx.spritzreader.R
 
 class SpritzView @JvmOverloads constructor(
@@ -21,19 +20,24 @@ class SpritzView @JvmOverloads constructor(
     var text: String? = null
         set(value) {
             value?.let {
-                spritzString = SpritzString(it)
+                spritzString = SpritzString(it.toLowerCase())
                 field = value
+                invalidate()
             }
         }
+
+    //TODO(" REMOVE IT LATER DUDE ")
+    var debugMode: Boolean = false
 
     private var spritzString: SpritzString? = null
 
     private val focusPaint: Paint
     private val commonPaint: Paint
-
+    private val linePaint: Paint
 
     private val defaultTextSize: Float
     private val defaultVerticalPadding: Float
+    private val verticalLineLength: Float
 
     init {
         val attributes =
@@ -51,8 +55,14 @@ class SpritzView @JvmOverloads constructor(
             textSize = defaultTextSize
         }
 
+        linePaint = Paint(ANTI_ALIAS_FLAG).apply {
+            color = attributes.getColor(R.styleable.SpritzView_textColor, 0)
+            strokeWidth = 2f.dpToPx(context)
+        }
+
         attributes.recycle()
         defaultVerticalPadding = 16f.dpToPx(context)
+        verticalLineLength = 16f.dpToPx(context)
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -87,17 +97,32 @@ class SpritzView @JvmOverloads constructor(
         super.onDraw(canvas)
         canvas?.apply {
             spritzString?.let { spritzString ->
-                val focusTextSize = focusPaint.measureText(spritzString.focus()) / 2
-                val focusXPosition = width / 2f - focusTextSize
-                val focusYPosition = height / 2f + focusTextSize
+                val textHeight = focusPaint.fontMetrics.run { descent - ascent + leading }
 
-                drawLine(width / 2f, 0f, width / 2f, height.toFloat(), commonPaint)
-                drawLine(0f, height / 2f, width.toFloat(), height / 2f, commonPaint)
+                val focusTextWidth = focusPaint.measureText(spritzString.focus()) / 2
+                val focusXPosition = width / 2f - focusTextWidth
+                val focusYPosition = height / 2f + textHeight / 4
+
+                if(debugMode) {
+                    drawDebugLines()
+                }
+
+                drawLine(0f, 0f, width.toFloat(), 0f, linePaint)
+                drawLine(width/ 2f, 0f, width/ 2f, verticalLineLength, linePaint)
+
+                drawLine(0f, height.toFloat(), width.toFloat(), height.toFloat(), linePaint)
+                drawLine(width / 2f, height.toFloat(), width / 2f, height - verticalLineLength, linePaint)
+
                 drawText(spritzString.focus(), focusXPosition, focusYPosition, focusPaint)
                 drawText(spritzString.start(), focusXPosition - commonPaint.measureText(spritzString.start()), focusYPosition, commonPaint)
                 drawText(spritzString.end(), focusXPosition + commonPaint.measureText(spritzString.focus()), focusYPosition, commonPaint)
             }
         }
+    }
+
+    private fun Canvas.drawDebugLines() {
+        drawLine(width / 2f, 0f, width / 2f, height.toFloat(), commonPaint)
+        drawLine(0f, height / 2f, width.toFloat(), height / 2f, commonPaint)
     }
 
 
