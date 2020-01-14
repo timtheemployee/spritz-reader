@@ -5,16 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.wxxtfxrmx.spritzreader.ui.views.SpritzView
-        android:id="@+id/spritzView"
-        android:layout_width="@dimen/match_constraint"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        style="@style/Widget.SpritzView.Light"/>
-
     <FrameLayout
         android:id="@+id/spritzContainer"
         android:layout_width="@dimen/match_constraint"

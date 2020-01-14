@@ -22,17 +22,6 @@ class NavigationFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val handler = Handler()
-
-
-        val largeText = getString(R.string.some_large_text).split(" ")
-
-        largeText.forEachIndexed { index, item ->
-            handler.postDelayed({
-                spritzView.text = item
-            }, 1000L * index + 1)
-        }
-
         navigation.setOnNavigationItemSelectedListener { item ->
             val fragment = when (item.itemId) {
                 R.id.library -> LibraryFragment.newInstance()
