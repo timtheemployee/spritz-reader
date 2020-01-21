@@ -1,4 +1,4 @@
-package com.wxxtfxrmx.spritzreader.ui.screens
+package com.wxxtfxrmx.spritzreader.presentation.screens
 
 import android.os.Bundle
 import android.view.LayoutInflater

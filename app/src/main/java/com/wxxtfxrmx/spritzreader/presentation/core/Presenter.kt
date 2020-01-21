@@ -1,4 +1,4 @@
-package com.wxxtfxrmx.spritzreader.ui.core
+package com.wxxtfxrmx.spritzreader.presentation.core
 
 import java.lang.ref.WeakReference
 
@@ -9,12 +9,12 @@ abstract class Presenter<V: View> {
     protected val view: V?
         get() = viewRef?.get()
 
-    protected open fun attachView(view: V) {
+    fun attachView(view: V) {
         viewRef = WeakReference(view)
         onFirstViewAttach()
     }
 
-    protected open fun onDestroyView() {
+    fun detachView() {
         viewRef = null
     }
 

@@ -1,4 +1,4 @@
-package com.wxxtfxrmx.spritzreader.ui.core
+package com.wxxtfxrmx.spritzreader.presentation.core
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,5 +12,4 @@ abstract class BaseFragment: Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(layout, container, false)
-
 }

@@ -3,14 +3,9 @@ package com.wxxtfxrmx.spritzreader.di
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.wxxtfxrmx.spritzreader.R
-import com.wxxtfxrmx.spritzreader.SpritzActivity
-import com.wxxtfxrmx.spritzreader.navigation.GlobalNavigator
 import com.wxxtfxrmx.spritzreader.navigation.Navigator
-import java.lang.IllegalArgumentException
 
-class SpritzActivityInjector(): Application.ActivityLifecycleCallbacks {
+class SpritzActivityInjector: Application.ActivityLifecycleCallbacks {
 
     private lateinit var navigator: Navigator
 
@@ -19,14 +14,7 @@ class SpritzActivityInjector(): Application.ActivityLifecycleCallbacks {
     }
 
     override fun onActivityStarted(activity: Activity) {
-        val supportActivity = activity as AppCompatActivity
 
-        navigator = GlobalNavigator(activity.supportFragmentManager, R.id.content)
-
-        when(activity) {
-            is SpritzActivity -> activity.applyDependencies(navigator)
-            else -> throw IllegalArgumentException("Activity $activity is not supported by service locator mechanism")
-        }
     }
 
     override fun onActivityDestroyed(activity: Activity) {
@@ -49,8 +37,4 @@ class SpritzActivityInjector(): Application.ActivityLifecycleCallbacks {
         //ignored
     }
 
-
-    private fun SpritzActivity.applyDependencies(navigator: Navigator) {
-        this.navigator = navigator
-    }
 }
