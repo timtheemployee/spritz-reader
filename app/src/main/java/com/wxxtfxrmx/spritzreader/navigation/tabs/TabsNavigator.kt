@@ -3,6 +3,7 @@ package com.wxxtfxrmx.spritzreader.navigation.tabs
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.wxxtfxrmx.spritzreader.di.ParentNavigator
 import com.wxxtfxrmx.spritzreader.navigation.Command
 import com.wxxtfxrmx.spritzreader.navigation.Command.Open
 import com.wxxtfxrmx.spritzreader.navigation.Command.Pop
@@ -11,11 +12,12 @@ import com.wxxtfxrmx.spritzreader.navigation.Navigator
 import com.wxxtfxrmx.spritzreader.presentation.screens.BookMarksFragment
 import com.wxxtfxrmx.spritzreader.presentation.screens.LibraryFragment
 import com.wxxtfxrmx.spritzreader.presentation.screens.RecentFilesFragment
+import javax.inject.Inject
 
-class TabsNavigator(
+class TabsNavigator @Inject constructor(
     private val fragmentManager: FragmentManager,
     @IdRes private val container: Int,
-    private val parentNavigator: Navigator
+    @ParentNavigator private val parentNavigator: Navigator
 ): Navigator {
 
 

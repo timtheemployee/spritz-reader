@@ -3,6 +3,7 @@ package com.wxxtfxrmx.spritzreader.navigation.routers
 import com.wxxtfxrmx.spritzreader.navigation.Command.Open
 import com.wxxtfxrmx.spritzreader.navigation.Destination.*
 import com.wxxtfxrmx.spritzreader.navigation.Navigator
+import javax.inject.Inject
 
 interface TabRouter {
 
@@ -13,7 +14,7 @@ interface TabRouter {
     fun openBookmarksScreen()
 }
 
-class TabRouterImpl(
+class TabRouterImpl @Inject constructor(
     private val navigator: Navigator
 ): TabRouter {
 

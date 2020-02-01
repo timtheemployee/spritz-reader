@@ -1,8 +1,7 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -25,11 +24,16 @@ android {
 
 // third-party libs
 ext {
-
+    gsonVersion = '2.8.5'
+    dagger2 = '2.26'
 }
 
 dependencies {
-
+    implementation "com.google.code.gson:gson:$gsonVersion"
+    implementation "com.google.dagger:dagger:$dagger2"
+    implementation "com.google.dagger:dagger-android-support:$dagger2"
+    kapt "com.google.dagger:dagger-compiler:$dagger2"
+    kapt "com.google.dagger:dagger-android-processor:$dagger2"
 }
 
 //support & android dependencies

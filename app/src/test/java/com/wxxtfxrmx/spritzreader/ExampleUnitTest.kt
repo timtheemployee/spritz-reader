@@ -1,5 +1,7 @@
 package com.wxxtfxrmx.spritzreader
 
+import com.google.gson.Gson
+import com.wxxtfxrmx.spritzreader.domain.tabs.Tab
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -10,8 +12,27 @@ import org.junit.Assert.*
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class ExampleUnitTest {
+
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun `test gson serialization`() {
+        val gson = Gson()
+
+        val tab = Tab.BOOKMARKS
+
+        val result = gson.toJson(tab)
+        println(result)
+
+        assertTrue(true)
+    }
+
+    @Test
+    fun `test gson desiralization`() {
+        val gson = Gson()
+
+        val tabString = "BOOKMARKS"
+
+        val result = gson.fromJson(tabString, Tab::class.java)
+
+        assertTrue(result == Tab.BOOKMARKS)
     }
 }

@@ -1,5 +1,6 @@
 package com.wxxtfxrmx.spritzreader.presentation.tabs
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -9,8 +10,10 @@ import com.wxxtfxrmx.spritzreader.presentation.core.BaseFragment
 import com.wxxtfxrmx.spritzreader.presentation.screens.BookMarksFragment
 import com.wxxtfxrmx.spritzreader.presentation.screens.LibraryFragment
 import com.wxxtfxrmx.spritzreader.presentation.screens.RecentFilesFragment
+import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.navigation_fragment.*
 import java.lang.IllegalArgumentException
+import javax.inject.Inject
 
 class TabsFragment : BaseFragment(), TabsView {
 
@@ -22,11 +25,16 @@ class TabsFragment : BaseFragment(), TabsView {
 
     override val layout = R.layout.navigation_fragment
 
+    @Inject
     lateinit var presenter: TabsPresenter
+
+    override fun onAttach(context: Context) {
+        AndroidSupportInjection.inject(this)
+        super.onAttach(context)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.e("TAG", "onViewCreated")
         presenter.attachView(this)
 
 
