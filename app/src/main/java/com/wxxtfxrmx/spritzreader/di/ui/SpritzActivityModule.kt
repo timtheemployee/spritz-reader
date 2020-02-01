@@ -1,8 +1,9 @@
-package com.wxxtfxrmx.spritzreader.di
+package com.wxxtfxrmx.spritzreader.di.ui
 
 import androidx.fragment.app.FragmentManager
 import com.wxxtfxrmx.spritzreader.R
 import com.wxxtfxrmx.spritzreader.SpritzActivity
+import com.wxxtfxrmx.spritzreader.di.*
 import com.wxxtfxrmx.spritzreader.navigation.Navigator
 import com.wxxtfxrmx.spritzreader.navigation.routers.MainRouter
 import com.wxxtfxrmx.spritzreader.navigation.routers.MainRouterImpl

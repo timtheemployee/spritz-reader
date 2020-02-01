@@ -1,7 +1,7 @@
-package com.wxxtfxrmx.spritzreader.di
+package com.wxxtfxrmx.spritzreader.di.ui
 
 import com.wxxtfxrmx.spritzreader.SpritzActivity
-import com.wxxtfxrmx.spritzreader.presentation.tabs.TabsFragment
+import com.wxxtfxrmx.spritzreader.di.ActivityScope
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

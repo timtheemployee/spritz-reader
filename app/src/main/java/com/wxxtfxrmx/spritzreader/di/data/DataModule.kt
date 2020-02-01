@@ -1,4 +1,4 @@
-package com.wxxtfxrmx.spritzreader.di
+package com.wxxtfxrmx.spritzreader.di.data
 
 import dagger.Module
 
