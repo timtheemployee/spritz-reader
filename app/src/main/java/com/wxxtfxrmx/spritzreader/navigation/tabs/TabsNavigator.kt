@@ -10,7 +10,7 @@ import com.wxxtfxrmx.spritzreader.navigation.Command.Pop
 import com.wxxtfxrmx.spritzreader.navigation.Destination
 import com.wxxtfxrmx.spritzreader.navigation.Navigator
 import com.wxxtfxrmx.spritzreader.presentation.screens.BookMarksFragment
-import com.wxxtfxrmx.spritzreader.presentation.screens.LibraryFragment
+import com.wxxtfxrmx.spritzreader.presentation.screens.library.LibraryFragment
 import com.wxxtfxrmx.spritzreader.presentation.screens.RecentFilesFragment
 import javax.inject.Inject
 

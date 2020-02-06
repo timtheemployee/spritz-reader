@@ -1,4 +1,4 @@
-package com.wxxtfxrmx.spritzreader.presentation.screens
+package com.wxxtfxrmx.spritzreader.presentation.screens.library
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,8 +10,11 @@ import androidx.fragment.app.Fragment
 class LibraryFragment: Fragment() {
 
     companion object {
-        fun newInstance(): Fragment = LibraryFragment()
+        fun newInstance(): Fragment =
+            LibraryFragment()
     }
+
+
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
