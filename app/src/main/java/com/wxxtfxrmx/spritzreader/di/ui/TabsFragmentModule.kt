@@ -2,7 +2,9 @@ package com.wxxtfxrmx.spritzreader.di.ui
 
 import androidx.fragment.app.FragmentManager
 import com.wxxtfxrmx.spritzreader.R
+import com.wxxtfxrmx.spritzreader.data.tabs.TabsRepositoryImpl
 import com.wxxtfxrmx.spritzreader.di.FragmentScope
+import com.wxxtfxrmx.spritzreader.domain.tabs.TabsRepository
 import com.wxxtfxrmx.spritzreader.navigation.Navigator
 import com.wxxtfxrmx.spritzreader.navigation.routers.TabRouter
 import com.wxxtfxrmx.spritzreader.navigation.routers.TabRouterImpl
@@ -28,6 +30,11 @@ interface TabsFragmentModule {
         fun provideResId(): Int = R.id.tabsContainer
 
     }
+
+
+    @Binds
+    @FragmentScope
+    fun bindTabsRepository(repository: TabsRepositoryImpl): TabsRepository
 
     @FragmentScope
     @Binds

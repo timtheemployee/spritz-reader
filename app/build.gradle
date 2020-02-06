@@ -16,6 +16,7 @@ android {
     }
     buildTypes {
         release {
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -58,10 +59,12 @@ ext {
     junit = '4.12'
     androidJUnit = '1.1.1'
     espresso = '3.2.0'
+    mockito = '1.10.9'
 }
 
 dependencies {
     testImplementation "junit:junit:$junit"
+    testImplementation "org.mockito:mockito-core:$mockito"
     androidTestImplementation "androidx.test.ext:junit:$androidJUnit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
 }
