@@ -2,6 +2,7 @@ package com.wxxtfxrmx.spritzreader.di.resources
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.os.Environment
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.wxxtfxrmx.spritzreader.di.AppScope
@@ -11,6 +12,11 @@ import javax.inject.Singleton
 
 @Module
 class ResourcesModule {
+
+    @Provides
+    @Singleton
+    fun provideRootPath(): String =
+        Environment.getRootDirectory().absolutePath
 
     @Provides
     @Singleton

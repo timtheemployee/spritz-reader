@@ -1,16 +1,22 @@
 package com.wxxtfxrmx.spritzreader.data.files
 
-import android.os.Environment
 import java.io.File
+import javax.inject.Inject
 
 interface FilesDataSource {
 
-    fun getFiles(): List<File>
+    fun get(): List<File>
 }
 
-class FilesDataSourceImpl(
+class FilesDataSourceImpl @Inject constructor(
     private val rootPath: String
 ): FilesDataSource {
 
-    override fun getFiles(): List<File> = emptyList()
+    override fun get(): List<File> {
+        val file = File(rootPath)
+
+        return file.walk()
+            .onEnter { it.endsWith(".pdf") }
+            .toList()
+    }
 }
