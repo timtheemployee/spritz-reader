@@ -3,6 +3,7 @@ package com.wxxtfxrmx.spritzreader.di.resources
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Environment
+import android.provider.MediaStore
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.wxxtfxrmx.spritzreader.di.AppScope
@@ -15,8 +16,11 @@ class ResourcesModule {
 
     @Provides
     @Singleton
-    fun provideRootPath(): String =
-        Environment.getRootDirectory().absolutePath
+    fun provideRootPath(@AppScope context: Context): List<String?> =
+        listOf(
+            context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)?.absolutePath,
+            context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)?.absolutePath
+        )
 
     @Provides
     @Singleton

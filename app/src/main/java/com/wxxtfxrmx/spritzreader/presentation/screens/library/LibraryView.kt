@@ -6,4 +6,10 @@ import com.wxxtfxrmx.spritzreader.presentation.core.View
 interface LibraryView: View {
 
     fun showBooksList(books: List<Book>)
+
+    fun showBooksNotFound()
+
+    fun showProgress()
+
+    fun hideProgress()
 }

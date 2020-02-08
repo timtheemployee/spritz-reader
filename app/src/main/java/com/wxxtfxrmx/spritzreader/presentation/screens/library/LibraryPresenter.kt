@@ -1,6 +1,5 @@
 package com.wxxtfxrmx.spritzreader.presentation.screens.library
 
-import android.util.Log
 import com.wxxtfxrmx.spritzreader.domain.library.Book
 import com.wxxtfxrmx.spritzreader.domain.library.GetBooksUseCase
 import com.wxxtfxrmx.spritzreader.presentation.core.Presenter
@@ -14,11 +13,22 @@ class LibraryPresenter @Inject constructor(
 
     override fun onFirstViewAttach() {
 
+        loadBooks()
+    }
+
+    private fun loadBooks() {
+        view?.showProgress()
         books = getBooksUseCase()
-        view?.showBooksList(books)
+
+        view?.hideProgress()
+        if (books.isEmpty()) {
+            view?.showBooksNotFound()
+        } else {
+            view?.showBooksList(books)
+        }
     }
 
     fun onBookClicked(book: Book) {
-        Log.e("Books", "Tag")
+
     }
 }

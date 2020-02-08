@@ -22,6 +22,6 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun provideFilesDataSource(root: String): FilesDataSource =
-        FilesDataSourceImpl(root)
+    fun provideFilesDataSource(paths: List<String?>): FilesDataSource =
+        FilesDataSourceImpl(paths)
 }
