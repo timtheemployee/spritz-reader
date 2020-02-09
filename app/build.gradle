@@ -21,6 +21,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildTypes.each {
+        it.buildConfigField 'String', 'SHARED_PREFERENCE_KEY', "SPRITZ_PREFERENCES_KEY"
+    }
 }
 
 // third-party libs

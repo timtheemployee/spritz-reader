@@ -8,7 +8,7 @@ class BookConverter @Inject constructor() {
 
     fun convert(file: File): Book {
 
-        require(file.endsWith(".pdf")) { "Illegal file type" }
+        require(file.absolutePath.endsWith(".pdf")) { "Illegal file type" }
 
         return Book(file.absolutePath, file.name)
     }

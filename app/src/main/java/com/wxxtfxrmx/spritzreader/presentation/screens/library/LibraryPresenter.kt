@@ -13,6 +13,7 @@ class LibraryPresenter @Inject constructor(
 
     override fun onFirstViewAttach() {
 
+        view?.requestWritePermission()
         loadBooks()
     }
 
@@ -31,4 +32,11 @@ class LibraryPresenter @Inject constructor(
     fun onBookClicked(book: Book) {
 
     }
+
+    fun onWritePermissionGranted(granted: Boolean = true) {
+        if (granted) {
+            loadBooks()
+        }
+    }
+
 }

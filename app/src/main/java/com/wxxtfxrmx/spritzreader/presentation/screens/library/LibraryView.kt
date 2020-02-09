@@ -12,4 +12,6 @@ interface LibraryView: View {
     fun showProgress()
 
     fun hideProgress()
+
+    fun requestWritePermission()
 }

@@ -1,6 +1,5 @@
 package com.wxxtfxrmx.spritzreader.data.files
 
-import android.util.Log
 import java.io.File
 import javax.inject.Inject
 
@@ -19,14 +18,11 @@ class FilesDataSourceImpl @Inject constructor(
             .filterNotNull()
             .map { File("$it/") }
 
-        files.forEach {
-            Log.e("TAG", "Files -> ${it.listFiles()?.size}")
-        }
-
-        return files
+        return files.flatMap(::findFiles)
     }
 
     private fun findFiles(file: File): List<File> =
         file.walk()
+            .filter { it.absolutePath.endsWith(".pdf") }
             .toList()
 }
