@@ -1,6 +1,6 @@
 package com.wxxtfxrmx.spritzreader.data.tabs
 
-import com.wxxtfxrmx.spritzreader.data.PreferencesDataSource
+import com.wxxtfxrmx.spritzreader.data.preferences.PreferencesDataSource
 import com.wxxtfxrmx.spritzreader.domain.tabs.Tab
 import com.wxxtfxrmx.spritzreader.domain.tabs.TabsRepository
 import javax.inject.Inject

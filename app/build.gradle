@@ -23,7 +23,7 @@ android {
     }
 
     buildTypes.each {
-        it.buildConfigField 'String', 'SHARED_PREFERENCE_KEY', "SPRITZ_PREFERENCES_KEY"
+        it.buildConfigField 'String', 'SHARED_PREFERENCE_KEY', "\"SPRITZ_PREFERENCES_KEY\""
     }
 }
 
@@ -31,10 +31,17 @@ android {
 ext {
     gsonVersion = '2.8.5'
     dagger2 = '2.26'
+    coroutinesCore = '1.3.3'
 }
 
 dependencies {
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesCore"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesCore"
+
+
     implementation "com.google.code.gson:gson:$gsonVersion"
+
     implementation "com.google.dagger:dagger:$dagger2"
     implementation "com.google.dagger:dagger-android-support:$dagger2"
     kapt "com.google.dagger:dagger-compiler:$dagger2"
@@ -49,7 +56,6 @@ ext {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$supportLib"
     implementation "androidx.core:core-ktx:$supportLib"

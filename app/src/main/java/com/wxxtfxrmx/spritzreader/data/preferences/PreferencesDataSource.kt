@@ -1,4 +1,4 @@
-package com.wxxtfxrmx.spritzreader.data
+package com.wxxtfxrmx.spritzreader.data.preferences
 
 import android.content.SharedPreferences
 import com.google.gson.Gson

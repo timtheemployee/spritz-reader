@@ -6,11 +6,16 @@ import javax.inject.Inject
 interface FilesDataSource {
 
     fun get(): List<File>
+
 }
 
 class FilesDataSourceImpl @Inject constructor(
     private val paths: List<String?>
 ): FilesDataSource {
+
+    private companion object {
+        const val PDF = ".pdf"
+    }
 
     override fun get(): List<File> {
 
@@ -23,6 +28,6 @@ class FilesDataSourceImpl @Inject constructor(
 
     private fun findFiles(file: File): List<File> =
         file.walk()
-            .filter { it.absolutePath.endsWith(".pdf") }
+            .filter { it.absolutePath.endsWith(PDF) }
             .toList()
 }
