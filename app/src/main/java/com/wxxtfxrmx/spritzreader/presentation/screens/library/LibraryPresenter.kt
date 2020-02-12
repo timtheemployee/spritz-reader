@@ -10,7 +10,7 @@ import javax.inject.Inject
 class LibraryPresenter @Inject constructor(
     private val getBooksUseCase: GetBooksUseCase,
     private val createCoverUseCase: CreateCoverUseCase
-): Presenter<LibraryView>() {
+) : Presenter<LibraryView>() {
 
     private var books: List<Book> = emptyList()
 
@@ -21,19 +21,19 @@ class LibraryPresenter @Inject constructor(
 
     private fun loadBooks() {
         view?.showProgress()
-        GlobalScope.launch {
+        launch {
             books = getBooksUseCase()
 
             //createCoversIfNeed(books)
 
-            withContext(Dispatchers.Main) {
-                view?.hideProgress()
-                if (books.isEmpty()) {
-                    view?.showBooksNotFound()
-                } else {
-                    view?.showBooksList(books)
-                }
+
+            view?.hideProgress()
+            if (books.isEmpty()) {
+                view?.showBooksNotFound()
+            } else {
+                view?.showBooksList(books)
             }
+
         }
     }
 
@@ -54,5 +54,4 @@ class LibraryPresenter @Inject constructor(
             loadBooks()
         }
     }
-
 }
