@@ -21,4 +21,4 @@ cache:
     - $HOME/.android/build-cache
 
 script:
-  - ./gradlew build
+  - ./gradlew build jacocoTestReport assembleAndroidTest
