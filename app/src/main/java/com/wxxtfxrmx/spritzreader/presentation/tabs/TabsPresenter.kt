@@ -22,8 +22,7 @@ class TabsPresenter @Inject constructor(
 
         when(getCurrentTabUseCase()) {
             Tab.LIBRARY -> router.openLibraryScreen()
-            Tab.BOOKMARKS -> router.openBookmarksScreen()
-            Tab.RECENT -> router.openRecentScreen()
+            Tab.READING -> router.openReadingScreen()
         }
     }
 
@@ -32,13 +31,8 @@ class TabsPresenter @Inject constructor(
         router.openLibraryScreen()
     }
 
-    fun onRecentClicked() {
-        setCurrentTabUseCase(Tab.RECENT)
-        router.openRecentScreen()
-    }
-
-    fun onBookmarksClicked() {
-        setCurrentTabUseCase(Tab.BOOKMARKS)
-        router.openBookmarksScreen()
+    fun onReadingClicked() {
+        setCurrentTabUseCase(Tab.READING)
+        router.openReadingScreen()
     }
 }

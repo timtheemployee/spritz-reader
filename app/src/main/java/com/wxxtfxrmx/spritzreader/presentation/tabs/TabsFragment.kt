@@ -30,8 +30,7 @@ class TabsFragment : BaseFragment(), TabsView {
         navigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.library -> presenter.onLibraryClicked()
-                R.id.recent -> presenter.onRecentClicked()
-                R.id.bookmarks -> presenter.onBookmarksClicked()
+                R.id.reading -> presenter.onReadingClicked()
                 else -> throw IllegalArgumentException("navigation not support $item, is it added in root navigation?")
             }
 

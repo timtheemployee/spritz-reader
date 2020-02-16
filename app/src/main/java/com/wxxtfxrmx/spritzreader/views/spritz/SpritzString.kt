@@ -1,4 +1,4 @@
-package com.wxxtfxrmx.spritzreader.ui.views
+package com.wxxtfxrmx.spritzreader.views.spritz
 
 class SpritzString(private val text: String) {
 

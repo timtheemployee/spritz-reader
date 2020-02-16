@@ -1,5 +1,6 @@
 package com.wxxtfxrmx.spritzreader.presentation.screens.library
 
+import com.wxxtfxrmx.spritzreader.domain.description.GetDescriptionUseCase
 import com.wxxtfxrmx.spritzreader.domain.library.Book
 import com.wxxtfxrmx.spritzreader.domain.library.CreateCoverUseCase
 import com.wxxtfxrmx.spritzreader.domain.library.GetBooksUseCase
@@ -9,10 +10,11 @@ import javax.inject.Inject
 
 class LibraryPresenter @Inject constructor(
     private val getBooksUseCase: GetBooksUseCase,
-    private val createCoverUseCase: CreateCoverUseCase
+    private val createCoverUseCase: CreateCoverUseCase,
+    private val getDescriptionUseCase: GetDescriptionUseCase
 ) : Presenter<LibraryView>() {
 
-    private var books: List<Book> = emptyList()
+    private var items: List<LibraryItem> = emptyList()
 
     override fun onFirstViewAttach() {
 
@@ -21,29 +23,26 @@ class LibraryPresenter @Inject constructor(
 
     private fun loadBooks() {
         view?.showProgress()
-        launch {
-            books = getBooksUseCase()
+        launch(Dispatchers.Main) {
 
-            //createCoversIfNeed(books)
-
+            items = getBooksUseCase().map {
+                fillItem(it)
+            }
 
             view?.hideProgress()
-            if (books.isEmpty()) {
-                view?.showBooksNotFound()
+            if (items.isNotEmpty()) {
+                view?.showLibraryItems(items)
             } else {
-                view?.showBooksList(books)
-            }
-
-        }
-    }
-
-    private suspend fun createCoversIfNeed(books: List<Book>) {
-        books.forEach {
-            if (it.coverPath == null) {
-                createCoverUseCase(it.path)
+                view?.showBooksNotFound()
             }
         }
     }
+
+    private suspend fun fillItem(book: Book): LibraryItem =
+        withContext(Dispatchers.IO) {
+            LibraryItem(book, getDescriptionUseCase(book), createCoverUseCase(book))
+        }
+
 
     fun onBookClicked(book: Book) {
 

@@ -13,11 +13,10 @@ class CoverHelper @Inject constructor(
 
     private companion object {
         const val TAG = "CoverHelper"
-        const val WIDTH = 50
-        const val HEIGHT = 100
+        const val WIDTH = 200
+        const val HEIGHT = 400
     }
 
-    //TODO make it async with coroutines
     fun createCover(): Bitmap {
         val config = Bitmap.Config.ARGB_8888
 
@@ -25,14 +24,11 @@ class CoverHelper @Inject constructor(
     }
 
 
-    // TODO throw error when file is not created, make it async with coroutines
-    // TODO make result callbacks with Deferred
-    fun saveCover(cover: Bitmap, path: String) {
-        val result = File(destination, createName(path))
-        Log.d(TAG, "Cover file -> ${result.absolutePath}")
-        val isCreated = result.createNewFile()
-        Log.d(TAG, "Is cover created?-> $isCreated")
-        if (!isCreated) return
+    fun saveCover(cover: Bitmap, path: String): String? {
+        val coverPath = createName(path)
+        val result = File(destination, coverPath)
+//        val isCreated = result.createNewFile()
+//        if (!isCreated) return null
 
         val outputStream = ByteArrayOutputStream()
         cover.compress(Bitmap.CompressFormat.PNG, 0, outputStream)
@@ -44,12 +40,9 @@ class CoverHelper @Inject constructor(
         fileOutputStream.write(bytes)
         fileOutputStream.flush()
         fileOutputStream.close()
+
+        return result.absolutePath
     }
 
-    private fun createName(path: String): String =
-        path
-            .substringAfterLast("/")
-            .substringBeforeLast(".")
-            .let { "$it.png" }
-
+    private fun createName(path: String): String = "$path.png"
 }

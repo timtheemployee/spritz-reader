@@ -5,7 +5,7 @@ import com.wxxtfxrmx.spritzreader.presentation.core.View
 
 interface LibraryView: View {
 
-    fun showBooksList(books: List<Book>)
+    fun showLibraryItems(books: List<LibraryItem>)
 
     fun showBooksNotFound()
 

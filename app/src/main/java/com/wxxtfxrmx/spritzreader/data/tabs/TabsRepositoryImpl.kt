@@ -15,7 +15,7 @@ class TabsRepositoryImpl @Inject constructor(
     }
 
     override fun get(): Tab =
-        preferencesDataSource.get(TAB_KEY, Tab::class.java) ?: Tab.BOOKMARKS
+        preferencesDataSource.get(TAB_KEY, Tab::class.java) ?: Tab.LIBRARY
 
     override fun set(tab: Tab) {
         preferencesDataSource.set(TAB_KEY, tab)

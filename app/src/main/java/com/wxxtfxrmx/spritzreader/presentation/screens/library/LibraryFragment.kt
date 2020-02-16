@@ -37,24 +37,26 @@ class LibraryFragment: BaseFragment(), LibraryView {
         presenter.attachView(this)
     }
 
-    override fun showBooksList(books: List<Book>) {
+    override fun showLibraryItems(books: List<LibraryItem>) {
         booksList.isVisible = true
         noBooksLayout.isVisible = false
-
+        progress.isVisible = false
         adapter.items = books
     }
 
     override fun showBooksNotFound() {
         booksList.isVisible = false
+        progress.isVisible = false
         noBooksLayout.isVisible = true
     }
 
     override fun showProgress() {
-
+        progress.isVisible = true
+        noBooksLayout.isVisible = false
     }
 
     override fun hideProgress() {
-
+        progress.isVisible = false
     }
 
     override fun requestWritePermission() {
@@ -63,6 +65,7 @@ class LibraryFragment: BaseFragment(), LibraryView {
             presenter.onWritePermissionGranted()
         }
     }
+
 
     override fun onRequestPermissionsResult(requestCode: Int,
                                             permissions: Array<out String>,

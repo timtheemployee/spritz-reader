@@ -9,6 +9,7 @@ import com.wxxtfxrmx.spritzreader.navigation.routers.MainRouter
 import com.wxxtfxrmx.spritzreader.navigation.routers.MainRouterImpl
 import com.wxxtfxrmx.spritzreader.navigation.tabs.MainNavigator
 import com.wxxtfxrmx.spritzreader.presentation.screens.library.LibraryFragment
+import com.wxxtfxrmx.spritzreader.presentation.screens.reading.ReadingFragment
 import com.wxxtfxrmx.spritzreader.presentation.tabs.TabsFragment
 import dagger.Binds
 import dagger.Module
@@ -52,4 +53,8 @@ interface SpritzActivityModule {
     @FragmentScope
     @ContributesAndroidInjector(modules = [LibraryFragmentModule::class])
     fun provideLibraryFragment(): LibraryFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector
+    fun provideReadingFragment(): ReadingFragment
 }

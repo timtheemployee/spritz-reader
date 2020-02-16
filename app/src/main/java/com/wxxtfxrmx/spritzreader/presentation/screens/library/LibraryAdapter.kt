@@ -8,7 +8,7 @@ class LibraryAdapter(
     private val onBookClickListener: (Book) -> Unit
 ): RecyclerView.Adapter<BookViewHolder>() {
 
-    var items: List<Book> = emptyList()
+    var items: List<LibraryItem> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()

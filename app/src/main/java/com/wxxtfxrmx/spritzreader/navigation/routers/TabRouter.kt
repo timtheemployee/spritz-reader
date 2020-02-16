@@ -9,9 +9,7 @@ interface TabRouter {
 
     fun openLibraryScreen()
 
-    fun openRecentScreen()
-
-    fun openBookmarksScreen()
+    fun openReadingScreen()
 }
 
 class TabRouterImpl @Inject constructor(
@@ -22,11 +20,7 @@ class TabRouterImpl @Inject constructor(
         navigator.execute(Open(LibraryScreen))
     }
 
-    override fun openRecentScreen() {
-        navigator.execute(Open(RecentScreen))
-    }
-
-    override fun openBookmarksScreen() {
-        navigator.execute(Open(BookmarksScreen))
+    override fun openReadingScreen() {
+        navigator.execute(Open(ReadingScreen))
     }
 }

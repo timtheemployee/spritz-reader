@@ -9,9 +9,8 @@ import com.wxxtfxrmx.spritzreader.navigation.Command.Open
 import com.wxxtfxrmx.spritzreader.navigation.Command.Pop
 import com.wxxtfxrmx.spritzreader.navigation.Destination
 import com.wxxtfxrmx.spritzreader.navigation.Navigator
-import com.wxxtfxrmx.spritzreader.presentation.screens.BookMarksFragment
 import com.wxxtfxrmx.spritzreader.presentation.screens.library.LibraryFragment
-import com.wxxtfxrmx.spritzreader.presentation.screens.RecentFilesFragment
+import com.wxxtfxrmx.spritzreader.presentation.screens.reading.ReadingFragment
 import javax.inject.Inject
 
 class TabsNavigator @Inject constructor(
@@ -58,8 +57,7 @@ class TabsNavigator @Inject constructor(
     private fun getFragment(destination: Destination): Fragment? =
         when (destination) {
             is Destination.LibraryScreen -> LibraryFragment.newInstance()
-            is Destination.RecentScreen -> RecentFilesFragment.newInstance()
-            is Destination.BookmarksScreen -> BookMarksFragment.newInstance()
+            is Destination.ReadingScreen -> ReadingFragment.newInsance()
             else -> null
         }
 }

@@ -1,4 +1,4 @@
-package com.wxxtfxrmx.spritzreader.ui.views
+package com.wxxtfxrmx.spritzreader.views.spritz
 
 import android.content.Context
 import android.graphics.Canvas
@@ -7,7 +7,6 @@ import android.graphics.Paint.ANTI_ALIAS_FLAG
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
-import com.wxxtfxrmx.spritzreader.BuildConfig
 import com.wxxtfxrmx.spritzreader.R
 
 class SpritzView @JvmOverloads constructor(
@@ -20,7 +19,8 @@ class SpritzView @JvmOverloads constructor(
     var text: String? = null
         set(value) {
             value?.let {
-                spritzString = SpritzString(it.toLowerCase())
+                spritzString =
+                    SpritzString(it.toLowerCase())
                 field = value
                 invalidate()
             }

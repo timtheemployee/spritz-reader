@@ -7,13 +7,7 @@
         android:title="@string/library" />
 
     <item
-        android:id="@+id/recent"
-        android:icon="@drawable/recent"
-        android:title="@string/recent" />
-
-    <item
-        android:id="@+id/bookmarks"
-        android:icon="@drawable/bookmarks"
-        android:title="@string/bookmarks" />
-
+        android:id="@+id/reading"
+        android:icon="@drawable/ic_electricity"
+        android:title="@string/reading" />
 </menu>
