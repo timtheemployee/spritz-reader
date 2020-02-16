@@ -1,11 +1,10 @@
 package com.wxxtfxrmx.spritzreader.presentation.screens.library
 
-import android.util.Log
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import com.wxxtfxrmx.spritzreader.R
 import com.wxxtfxrmx.spritzreader.domain.library.Book
 import com.wxxtfxrmx.spritzreader.domain.library.Cover
@@ -27,11 +26,8 @@ class BookViewHolder(parent: ViewGroup,
     }
 
     private fun ImageView.showCover(cover: Cover?) {
-        Log.e("BookViewHolder", "Cover is -> ${cover?.path}")
-        Picasso.get()
-            .load(cover?.path)
-            .fit()
-            .centerCrop()
-            .into(this)
+        val bitmap = BitmapFactory.decodeFile(cover?.path)
+
+        bitmap?.let(this::setImageBitmap)
     }
 }
