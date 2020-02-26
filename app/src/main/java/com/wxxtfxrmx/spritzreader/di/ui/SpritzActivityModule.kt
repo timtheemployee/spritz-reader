@@ -47,7 +47,7 @@ interface SpritzActivityModule {
 
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [TabsFragmentModule::class])
+    @ContributesAndroidInjector(modules = [TabsModule::class])
     fun provideTabsFragment(): TabsFragment
 
     @FragmentScope
@@ -55,6 +55,6 @@ interface SpritzActivityModule {
     fun provideLibraryFragment(): LibraryFragment
 
     @FragmentScope
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = [ReadingFragmentModule::class])
     fun provideReadingFragment(): ReadingFragment
 }

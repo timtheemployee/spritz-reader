@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.wxxtfxrmx.spritzreader.R
-import com.wxxtfxrmx.spritzreader.domain.library.Book
-import com.wxxtfxrmx.spritzreader.domain.library.Cover
+import com.wxxtfxrmx.spritzreader.domain.books.Book
+import com.wxxtfxrmx.spritzreader.domain.books.Cover
 import kotlinx.android.synthetic.main.library_item.view.*
 
 class BookViewHolder(parent: ViewGroup,

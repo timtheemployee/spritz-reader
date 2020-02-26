@@ -6,7 +6,6 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.wxxtfxrmx.spritzreader.R
-import com.wxxtfxrmx.spritzreader.domain.library.Book
 import com.wxxtfxrmx.spritzreader.presentation.core.BaseFragment
 import com.wxxtfxrmx.spritzreader.presentation.core.isGranted
 import com.wxxtfxrmx.spritzreader.presentation.core.requestPermission

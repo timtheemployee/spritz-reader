@@ -1,4 +1,4 @@
-package com.wxxtfxrmx.spritzreader.domain.library
+package com.wxxtfxrmx.spritzreader.domain.books
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

@@ -57,7 +57,7 @@ class TabsNavigator @Inject constructor(
     private fun getFragment(destination: Destination): Fragment? =
         when (destination) {
             is Destination.LibraryScreen -> LibraryFragment.newInstance()
-            is Destination.ReadingScreen -> ReadingFragment.newInsance()
+            is Destination.ReadingScreen -> ReadingFragment.newInstance()
             else -> null
         }
 }

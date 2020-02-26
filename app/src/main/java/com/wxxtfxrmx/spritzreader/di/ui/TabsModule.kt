@@ -15,7 +15,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-interface TabsFragmentModule {
+interface TabsModule {
 
     @Module
     companion object {

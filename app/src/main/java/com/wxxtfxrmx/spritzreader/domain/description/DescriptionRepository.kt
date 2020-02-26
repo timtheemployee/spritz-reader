@@ -1,7 +1,7 @@
 package com.wxxtfxrmx.spritzreader.domain.description
 
-import com.wxxtfxrmx.spritzreader.domain.library.Book
-import com.wxxtfxrmx.spritzreader.domain.library.Description
+import com.wxxtfxrmx.spritzreader.domain.books.Book
+import com.wxxtfxrmx.spritzreader.domain.books.Description
 
 interface DescriptionRepository {
 

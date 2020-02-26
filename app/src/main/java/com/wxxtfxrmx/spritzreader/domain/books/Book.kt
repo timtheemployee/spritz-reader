@@ -1,4 +1,4 @@
-package com.wxxtfxrmx.spritzreader.domain.library
+package com.wxxtfxrmx.spritzreader.domain.books
 
 data class Book(
     val path: String,

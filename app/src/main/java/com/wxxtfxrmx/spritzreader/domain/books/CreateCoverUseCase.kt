@@ -1,4 +1,4 @@
-package com.wxxtfxrmx.spritzreader.domain.library
+package com.wxxtfxrmx.spritzreader.domain.books
 
 import android.graphics.pdf.PdfRenderer
 import android.os.ParcelFileDescriptor

@@ -1,9 +1,9 @@
-package com.wxxtfxrmx.spritzreader.data.library
+package com.wxxtfxrmx.spritzreader.data.books
 
 import com.wxxtfxrmx.spritzreader.data.files.FilesDataSource
-import com.wxxtfxrmx.spritzreader.domain.library.Book
-import com.wxxtfxrmx.spritzreader.domain.library.BookConverter
-import com.wxxtfxrmx.spritzreader.domain.library.BooksRepository
+import com.wxxtfxrmx.spritzreader.domain.books.Book
+import com.wxxtfxrmx.spritzreader.domain.books.BookConverter
+import com.wxxtfxrmx.spritzreader.domain.books.BooksRepository
 import javax.inject.Inject
 
 class BooksRepositoryImpl @Inject constructor(

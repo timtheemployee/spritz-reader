@@ -1,7 +1,6 @@
-package com.wxxtfxrmx.spritzreader.domain.library
+package com.wxxtfxrmx.spritzreader.domain.books
 
 import android.graphics.Bitmap
-import android.util.Log
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream

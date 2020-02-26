@@ -1,14 +1,15 @@
 package com.wxxtfxrmx.spritzreader.di.ui
 
 import com.wxxtfxrmx.spritzreader.data.description.DescriptionRepositoryImpl
-import com.wxxtfxrmx.spritzreader.data.library.BooksRepositoryImpl
+import com.wxxtfxrmx.spritzreader.data.books.BooksRepositoryImpl
 import com.wxxtfxrmx.spritzreader.di.FragmentScope
+import com.wxxtfxrmx.spritzreader.di.data.SelectedBookModule
 import com.wxxtfxrmx.spritzreader.domain.description.DescriptionRepository
-import com.wxxtfxrmx.spritzreader.domain.library.BooksRepository
+import com.wxxtfxrmx.spritzreader.domain.books.BooksRepository
 import dagger.Binds
 import dagger.Module
 
-@Module
+@Module(includes = [SelectedBookModule::class, TabsModule::class])
 interface LibraryFragmentModule {
 
     @Binds

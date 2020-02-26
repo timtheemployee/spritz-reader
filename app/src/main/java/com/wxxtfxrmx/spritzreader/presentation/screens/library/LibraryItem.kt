@@ -1,8 +1,8 @@
 package com.wxxtfxrmx.spritzreader.presentation.screens.library
 
-import com.wxxtfxrmx.spritzreader.domain.library.Description
-import com.wxxtfxrmx.spritzreader.domain.library.Book
-import com.wxxtfxrmx.spritzreader.domain.library.Cover
+import com.wxxtfxrmx.spritzreader.domain.books.Description
+import com.wxxtfxrmx.spritzreader.domain.books.Book
+import com.wxxtfxrmx.spritzreader.domain.books.Cover
 
 data class LibraryItem(
     val book: Book,

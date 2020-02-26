@@ -2,7 +2,7 @@ package com.wxxtfxrmx.spritzreader.presentation.screens.library
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.wxxtfxrmx.spritzreader.domain.library.Book
+import com.wxxtfxrmx.spritzreader.domain.books.Book
 
 class LibraryAdapter(
     private val onBookClickListener: (Book) -> Unit
