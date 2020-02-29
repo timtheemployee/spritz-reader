@@ -9,7 +9,7 @@ import com.wxxtfxrmx.spritzreader.domain.books.BooksRepository
 import dagger.Binds
 import dagger.Module
 
-@Module(includes = [SelectedBookModule::class, TabsModule::class])
+@Module
 interface LibraryFragmentModule {
 
     @Binds

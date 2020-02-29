@@ -6,15 +6,11 @@ import com.wxxtfxrmx.spritzreader.navigation.Destination
 import com.wxxtfxrmx.spritzreader.navigation.Navigator
 import javax.inject.Inject
 
-interface MainRouter {
-    fun openTabsScreen()
-}
+class MainRouter @Inject constructor(
+    @ParentNavigator private val navigator: Navigator
+){
 
-class MainRouterImpl @Inject constructor(
-    @ParentNavigator private val mainNavigator: Navigator
-): MainRouter {
-
-    override fun openTabsScreen() {
-        mainNavigator.execute(Open(Destination.TabsScreen))
+    fun openTabsScreen() {
+        navigator.execute(Open(Destination.TabsScreen))
     }
 }

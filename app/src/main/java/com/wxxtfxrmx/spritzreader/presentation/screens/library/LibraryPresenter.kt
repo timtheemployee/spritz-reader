@@ -2,6 +2,8 @@ package com.wxxtfxrmx.spritzreader.presentation.screens.library
 
 import com.wxxtfxrmx.spritzreader.domain.books.*
 import com.wxxtfxrmx.spritzreader.domain.description.GetDescriptionUseCase
+import com.wxxtfxrmx.spritzreader.navigation.routers.LibraryRouter
+import com.wxxtfxrmx.spritzreader.navigation.routers.MainRouter
 import com.wxxtfxrmx.spritzreader.navigation.routers.TabRouter
 import com.wxxtfxrmx.spritzreader.navigation.tabs.TabsNavigator
 import com.wxxtfxrmx.spritzreader.presentation.core.Presenter
@@ -12,7 +14,8 @@ class LibraryPresenter @Inject constructor(
     private val getBooksUseCase: GetBooksUseCase,
     private val createCoverUseCase: CreateCoverUseCase,
     private val getDescriptionUseCase: GetDescriptionUseCase,
-    private val setSelectedBookUseCase: SetSelectedBookUseCase
+    private val setSelectedBookUseCase: SetSelectedBookUseCase,
+    private val router: LibraryRouter
 ) : Presenter<LibraryView>() {
 
     private var items: List<LibraryItem> = emptyList()
@@ -47,6 +50,7 @@ class LibraryPresenter @Inject constructor(
 
     fun onBookClicked(book: Book) {
         setSelectedBookUseCase(book)
+            .also { router.openReadingScreen() }
     }
 
     fun onWritePermissionGranted(granted: Boolean = true) {

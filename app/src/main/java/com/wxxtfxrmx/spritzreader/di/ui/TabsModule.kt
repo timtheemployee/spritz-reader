@@ -4,17 +4,20 @@ import androidx.fragment.app.FragmentManager
 import com.wxxtfxrmx.spritzreader.R
 import com.wxxtfxrmx.spritzreader.data.tabs.TabsRepositoryImpl
 import com.wxxtfxrmx.spritzreader.di.FragmentScope
+import com.wxxtfxrmx.spritzreader.di.NestedFragmentScope
+import com.wxxtfxrmx.spritzreader.di.data.SelectedBookModule
 import com.wxxtfxrmx.spritzreader.domain.tabs.TabsRepository
 import com.wxxtfxrmx.spritzreader.navigation.Navigator
-import com.wxxtfxrmx.spritzreader.navigation.routers.TabRouter
-import com.wxxtfxrmx.spritzreader.navigation.routers.TabRouterImpl
 import com.wxxtfxrmx.spritzreader.navigation.tabs.TabsNavigator
+import com.wxxtfxrmx.spritzreader.presentation.screens.library.LibraryFragment
+import com.wxxtfxrmx.spritzreader.presentation.screens.reading.ReadingFragment
 import com.wxxtfxrmx.spritzreader.presentation.tabs.TabsFragment
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
+import dagger.android.ContributesAndroidInjector
 
-@Module
+@Module(includes = [SelectedBookModule::class])
 interface TabsModule {
 
     @Module
@@ -28,19 +31,23 @@ interface TabsModule {
         @FragmentScope
         @Provides
         fun provideResId(): Int = R.id.tabsContainer
-
     }
 
+    @Binds
+    @FragmentScope
+    fun bindTabsNavigator(tabsNavigator: TabsNavigator): Navigator
 
     @Binds
     @FragmentScope
     fun bindTabsRepository(repository: TabsRepositoryImpl): TabsRepository
 
-    @FragmentScope
-    @Binds
-    fun bindTabsNavigator(tabsNavigator: TabsNavigator): Navigator
 
-    @FragmentScope
-    @Binds
-    fun bindTabsRouter(router: TabRouterImpl): TabRouter
+    @NestedFragmentScope
+    @ContributesAndroidInjector(modules = [LibraryFragmentModule::class])
+    fun provideLibraryFragment(): LibraryFragment
+
+    @NestedFragmentScope
+    @ContributesAndroidInjector(modules = [ReadingFragmentModule::class])
+    fun provideReadingFragment(): ReadingFragment
+
 }

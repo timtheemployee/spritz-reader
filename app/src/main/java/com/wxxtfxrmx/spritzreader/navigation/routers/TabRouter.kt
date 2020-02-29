@@ -5,22 +5,15 @@ import com.wxxtfxrmx.spritzreader.navigation.Destination.*
 import com.wxxtfxrmx.spritzreader.navigation.Navigator
 import javax.inject.Inject
 
-interface TabRouter {
-
-    fun openLibraryScreen()
-
-    fun openReadingScreen()
-}
-
-class TabRouterImpl @Inject constructor(
+class TabRouter @Inject constructor(
     private val navigator: Navigator
-): TabRouter {
+) {
 
-    override fun openLibraryScreen() {
+    fun openLibraryScreen() {
         navigator.execute(Open(LibraryScreen))
     }
 
-    override fun openReadingScreen() {
+    fun openReadingScreen() {
         navigator.execute(Open(ReadingScreen))
     }
 }
