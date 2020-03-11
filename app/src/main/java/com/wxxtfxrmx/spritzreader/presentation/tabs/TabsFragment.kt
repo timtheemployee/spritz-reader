@@ -35,14 +35,12 @@ class TabsFragment : BaseFragment(), TabsView, HasAndroidInjector {
         super.onViewCreated(view, savedInstanceState)
         presenter.attachView(this)
 
-
         navigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.library -> presenter.onLibraryClicked()
                 R.id.reading -> presenter.onReadingClicked()
                 else -> throw IllegalArgumentException("navigation not support $item, is it added in root navigation?")
             }
-
 
             return@setOnNavigationItemSelectedListener true
         }

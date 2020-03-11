@@ -13,9 +13,11 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
-@Module(includes = [
+@Module(
+    includes = [
         ResourcesModule::class,
-        SelectedBookModule::class
+        SelectedBookModule::class,
+        ProgressModule::class
     ]
 )
 class DataModule {
