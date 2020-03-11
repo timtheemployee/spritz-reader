@@ -3,7 +3,6 @@ package com.wxxtfxrmx.spritzreader.di
 import android.content.Context
 import com.wxxtfxrmx.spritzreader.App
 import com.wxxtfxrmx.spritzreader.di.data.DataModule
-import com.wxxtfxrmx.spritzreader.di.resources.ResourcesModule
 import com.wxxtfxrmx.spritzreader.di.ui.ActivitiesModule
 import dagger.BindsInstance
 import dagger.Component
@@ -16,7 +15,6 @@ import javax.inject.Singleton
     modules = [
         AndroidSupportInjectionModule::class,
         AndroidInjectionModule::class,
-        ResourcesModule::class,
         DataModule::class,
         ActivitiesModule::class
     ]

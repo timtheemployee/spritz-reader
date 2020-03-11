@@ -20,10 +20,12 @@ class TabsPresenter @Inject constructor(
 
     private fun openLastTab() {
 
-        when(getCurrentTabUseCase()) {
-            Tab.LIBRARY -> router.openLibraryScreen()
-            Tab.READING -> router.openReadingScreen()
-        }
+//        when(getCurrentTabUseCase()) {
+//            Tab.LIBRARY -> router.openLibraryScreen()
+//            Tab.READING -> router.openReadingScreen()
+//        }
+
+        router.openLibraryScreen()
     }
 
     fun onLibraryClicked() {

@@ -45,7 +45,7 @@ class MainNavigator @Inject constructor(
     private fun getFragment(destination: Destination): Fragment {
         return when(destination) {
             is TabsScreen -> TabsFragment.newInstance()
-            else -> throw IllegalArgumentException("Destination $destination is not root fragment. Check MainNavigator#getFragment")
+            else -> throw IllegalArgumentException("Destination $destination is not root fragment. Check TabNavigator#getFragment")
         }
     }
 }

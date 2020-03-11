@@ -13,13 +13,19 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
-@Module(includes = [ResourcesModule::class])
+@Module(includes = [
+        ResourcesModule::class,
+        SelectedBookModule::class
+    ]
+)
 class DataModule {
 
     @Provides
     @Singleton
-    fun providePreferenceDataSource(sharedPreferences: SharedPreferences,
-                                    gson: Gson): PreferencesDataSource =
+    fun providePreferenceDataSource(
+        sharedPreferences: SharedPreferences,
+        gson: Gson
+    ): PreferencesDataSource =
         PreferencesDataSourceImpl(
             sharedPreferences,
             gson
