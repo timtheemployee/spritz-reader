@@ -1,7 +1,6 @@
 package com.wxxtfxrmx.spritzreader.data.files
 
 import java.io.File
-import javax.inject.Inject
 
 interface FilesDataSource {
 
@@ -9,7 +8,7 @@ interface FilesDataSource {
 
 }
 
-class FilesDataSourceImpl @Inject constructor(
+class FilesDataSourceImpl(
     private val paths: List<String?>
 ): FilesDataSource {
 

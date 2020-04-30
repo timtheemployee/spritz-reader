@@ -5,10 +5,9 @@ import com.wxxtfxrmx.spritzreader.data.preferences.PreferencesDataSource
 import com.wxxtfxrmx.spritzreader.domain.books.Book
 import com.wxxtfxrmx.spritzreader.domain.progress.Progress
 import com.wxxtfxrmx.spritzreader.domain.progress.ProgressRepository
-import javax.inject.Inject
 
 //TODO Add SQL Datasource for progress & settings
-class ProgressRepositoryImpl @Inject constructor(
+class ProgressRepositoryImpl(
     private val preferencesDataSource: PreferencesDataSource,
     private val gson: Gson
 ): ProgressRepository {

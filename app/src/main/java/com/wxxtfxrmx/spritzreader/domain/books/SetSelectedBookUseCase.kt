@@ -1,8 +1,6 @@
 package com.wxxtfxrmx.spritzreader.domain.books
 
-import javax.inject.Inject
-
-class SetSelectedBookUseCase @Inject constructor(
+class SetSelectedBookUseCase(
     private val selectedBookRepository: SelectedBookRepository
 ) {
 

@@ -6,9 +6,8 @@ import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
-import javax.inject.Inject
 
-class CreateCoverUseCase @Inject constructor(
+class CreateCoverUseCase(
     private val covers: CoverHelper
 ) {
 

@@ -1,8 +1,6 @@
 package com.wxxtfxrmx.spritzreader.domain.tabs
 
-import javax.inject.Inject
-
-class SetCurrentTabUseCase @Inject constructor(
+class SetCurrentTabUseCase(
     private val tabsRepository: TabsRepository
 ) {
 

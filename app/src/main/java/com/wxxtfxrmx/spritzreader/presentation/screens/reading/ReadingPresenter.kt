@@ -6,9 +6,8 @@ import com.wxxtfxrmx.spritzreader.domain.progress.GetProgressUseCase
 import com.wxxtfxrmx.spritzreader.domain.progress.Progress
 import com.wxxtfxrmx.spritzreader.domain.progress.SetProgressUseCase
 import com.wxxtfxrmx.spritzreader.presentation.core.Presenter
-import javax.inject.Inject
 
-class ReadingPresenter @Inject constructor(
+class ReadingPresenter(
     getSelectedBookUseCase: GetSelectedBookUseCase,
     private val getPageUseCase: GetPageUseCase,
     private val getProgressUseCase: GetProgressUseCase,

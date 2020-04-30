@@ -1,9 +1,8 @@
 package com.wxxtfxrmx.spritzreader.domain.books
 
 import java.io.File
-import javax.inject.Inject
 
-class BookConverter @Inject constructor() {
+class BookConverter {
 
     fun convert(file: File): Book {
         require(file.absolutePath.endsWith(".pdf")) {

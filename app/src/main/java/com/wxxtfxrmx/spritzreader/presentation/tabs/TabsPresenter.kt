@@ -5,9 +5,8 @@ import com.wxxtfxrmx.spritzreader.domain.tabs.SetCurrentTabUseCase
 import com.wxxtfxrmx.spritzreader.domain.tabs.Tab
 import com.wxxtfxrmx.spritzreader.navigation.routers.TabRouter
 import com.wxxtfxrmx.spritzreader.presentation.core.Presenter
-import javax.inject.Inject
 
-class TabsPresenter @Inject constructor(
+class TabsPresenter(
     private val router: TabRouter,
     private val getCurrentTabUseCase: GetCurrentTabUseCase,
     private val setCurrentTabUseCase: SetCurrentTabUseCase

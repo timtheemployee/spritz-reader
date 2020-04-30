@@ -4,9 +4,8 @@ import com.wxxtfxrmx.spritzreader.domain.books.Book
 import com.wxxtfxrmx.spritzreader.domain.books.Description
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
-class GetDescriptionUseCase @Inject constructor(
+class GetDescriptionUseCase (
     private val repository: DescriptionRepository
 ) {
 

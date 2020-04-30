@@ -4,9 +4,8 @@ import com.wxxtfxrmx.spritzreader.data.files.FilesDataSource
 import com.wxxtfxrmx.spritzreader.domain.books.Book
 import com.wxxtfxrmx.spritzreader.domain.books.BookConverter
 import com.wxxtfxrmx.spritzreader.domain.books.BooksRepository
-import javax.inject.Inject
 
-class BooksRepositoryImpl @Inject constructor(
+class BooksRepositoryImpl(
     private val filesDataSource: FilesDataSource,
     private val converter: BookConverter
 ) : BooksRepository {

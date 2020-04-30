@@ -10,7 +10,6 @@ import com.wxxtfxrmx.spritzreader.presentation.core.BaseFragment
 import com.wxxtfxrmx.spritzreader.presentation.core.isGranted
 import com.wxxtfxrmx.spritzreader.presentation.core.requestPermission
 import kotlinx.android.synthetic.main.library_fragment.*
-import javax.inject.Inject
 
 class LibraryFragment: BaseFragment(), LibraryView {
 
@@ -23,7 +22,6 @@ class LibraryFragment: BaseFragment(), LibraryView {
 
     override val layout = R.layout.library_fragment
 
-    @Inject
     lateinit var presenter: LibraryPresenter
 
     private lateinit var adapter: LibraryAdapter

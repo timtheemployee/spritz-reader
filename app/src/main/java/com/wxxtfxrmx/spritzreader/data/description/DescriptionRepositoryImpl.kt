@@ -9,9 +9,8 @@ import com.wxxtfxrmx.spritzreader.domain.books.Book
 import com.wxxtfxrmx.spritzreader.domain.books.Description
 import java.io.File
 import java.lang.Exception
-import javax.inject.Inject
 
-class DescriptionRepositoryImpl @Inject constructor(): DescriptionRepository {
+class DescriptionRepositoryImpl: DescriptionRepository {
 
     override fun get(book: Book): Description {
         val file = File(book.path)

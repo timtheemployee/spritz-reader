@@ -1,7 +1,6 @@
 package com.wxxtfxrmx.spritzreader.data.progress
 
 import android.content.SharedPreferences
-import javax.inject.Inject
 
 //TODO Add SQL support for progress storage
 interface ProgressDataSource {
@@ -11,7 +10,7 @@ interface ProgressDataSource {
     fun set(book: String, progress: String)
 }
 
-class ProgressDataSourceImpl @Inject constructor(
+class ProgressDataSourceImpl(
     private val sharedPreferences: SharedPreferences
 ): ProgressDataSource {
 

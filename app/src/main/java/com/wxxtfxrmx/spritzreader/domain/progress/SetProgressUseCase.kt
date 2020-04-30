@@ -1,8 +1,6 @@
 package com.wxxtfxrmx.spritzreader.domain.progress
 
-import javax.inject.Inject
-
-class SetProgressUseCase @Inject constructor(
+class SetProgressUseCase(
     private val repository: ProgressRepository
 ){
 

@@ -3,8 +3,6 @@ package com.wxxtfxrmx.spritzreader.navigation.tabs
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.wxxtfxrmx.spritzreader.di.ParentContainerId
-import com.wxxtfxrmx.spritzreader.di.ParentFragmentManager
 import com.wxxtfxrmx.spritzreader.navigation.Command
 import com.wxxtfxrmx.spritzreader.navigation.Command.Open
 import com.wxxtfxrmx.spritzreader.navigation.Command.Pop
@@ -13,11 +11,10 @@ import com.wxxtfxrmx.spritzreader.navigation.Destination.TabsScreen
 import com.wxxtfxrmx.spritzreader.navigation.Navigator
 import com.wxxtfxrmx.spritzreader.presentation.tabs.TabsFragment
 import java.lang.IllegalArgumentException
-import javax.inject.Inject
 
-class MainNavigator @Inject constructor(
-    @ParentFragmentManager private val fragmentManager: FragmentManager,
-    @ParentContainerId @IdRes private val container: Int
+class MainNavigator (
+    private val fragmentManager: FragmentManager,
+    @IdRes private val container: Int
 ): Navigator {
 
     override fun execute(command: Command) {

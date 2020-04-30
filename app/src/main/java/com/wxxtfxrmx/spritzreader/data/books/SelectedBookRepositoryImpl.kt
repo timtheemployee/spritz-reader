@@ -3,9 +3,8 @@ package com.wxxtfxrmx.spritzreader.data.books
 import com.wxxtfxrmx.spritzreader.data.preferences.PreferencesDataSource
 import com.wxxtfxrmx.spritzreader.domain.books.Book
 import com.wxxtfxrmx.spritzreader.domain.books.SelectedBookRepository
-import javax.inject.Inject
 
-class SelectedBookRepositoryImpl @Inject constructor(
+class SelectedBookRepositoryImpl(
     private val preferencesDataSource: PreferencesDataSource
 ): SelectedBookRepository {
 

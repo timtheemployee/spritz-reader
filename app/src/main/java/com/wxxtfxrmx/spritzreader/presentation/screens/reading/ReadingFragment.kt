@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import com.wxxtfxrmx.spritzreader.R
 import com.wxxtfxrmx.spritzreader.presentation.core.BaseFragment
 import kotlinx.android.synthetic.main.reading_fragment.*
-import javax.inject.Inject
 
 class ReadingFragment: BaseFragment(), ReadingView {
 
@@ -16,7 +15,6 @@ class ReadingFragment: BaseFragment(), ReadingView {
 
     override val layout = R.layout.reading_fragment
 
-    @Inject
     lateinit var presenter: ReadingPresenter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

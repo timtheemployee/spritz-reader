@@ -4,9 +4,8 @@ import android.graphics.Bitmap
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
-import javax.inject.Inject
 
-class CoverHelper @Inject constructor(
+class CoverHelper(
     private val destination: String?
 ) {
 

@@ -6,9 +6,8 @@ import com.itextpdf.kernel.pdf.canvas.parser.PdfTextExtractor
 import com.itextpdf.kernel.pdf.canvas.parser.listener.SimpleTextExtractionStrategy
 import com.wxxtfxrmx.spritzreader.domain.progress.Progress
 import java.io.File
-import javax.inject.Inject
 
-class GetPageUseCase @Inject constructor() {
+class GetPageUseCase {
 
     operator fun invoke(progress: Progress): String {
         val file = File(progress.book.path)
