@@ -3,9 +3,6 @@ package com.wxxtfxrmx.spritzreader.presentation.screens.library
 import com.wxxtfxrmx.spritzreader.domain.books.*
 import com.wxxtfxrmx.spritzreader.domain.description.GetDescriptionUseCase
 import com.wxxtfxrmx.spritzreader.navigation.routers.LibraryRouter
-import com.wxxtfxrmx.spritzreader.navigation.routers.MainRouter
-import com.wxxtfxrmx.spritzreader.navigation.routers.TabRouter
-import com.wxxtfxrmx.spritzreader.navigation.tabs.TabsNavigator
 import com.wxxtfxrmx.spritzreader.presentation.core.Presenter
 import kotlinx.coroutines.*
 import javax.inject.Inject

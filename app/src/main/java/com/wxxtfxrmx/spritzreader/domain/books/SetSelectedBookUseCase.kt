@@ -3,10 +3,10 @@ package com.wxxtfxrmx.spritzreader.domain.books
 import javax.inject.Inject
 
 class SetSelectedBookUseCase @Inject constructor(
-    private val selectedBookRepository: SelectedBookRepository
+    private val selectedBookDataSource: SelectedBookDataSource
 ) {
 
     operator fun invoke(book: Book) {
-        selectedBookRepository.set(book)
+        selectedBookDataSource.set(book)
     }
 }

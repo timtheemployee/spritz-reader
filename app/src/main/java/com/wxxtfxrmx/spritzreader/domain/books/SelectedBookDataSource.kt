@@ -1,6 +1,6 @@
 package com.wxxtfxrmx.spritzreader.domain.books
 
-interface SelectedBookRepository {
+interface SelectedBookDataSource {
 
     fun get(): Book?
 

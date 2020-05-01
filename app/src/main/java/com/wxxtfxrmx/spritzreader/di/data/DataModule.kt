@@ -4,8 +4,8 @@ import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.wxxtfxrmx.spritzreader.data.covers.CoversDataSource
 import com.wxxtfxrmx.spritzreader.data.covers.CoversDataSourceImpl
-import com.wxxtfxrmx.spritzreader.data.preferences.PreferencesDataSource
-import com.wxxtfxrmx.spritzreader.data.preferences.PreferencesDataSourceImpl
+import com.wxxtfxrmx.spritzreader.data.preferences.Preferences
+import com.wxxtfxrmx.spritzreader.data.preferences.PreferencesImpl
 import com.wxxtfxrmx.spritzreader.data.files.FilesDataSource
 import com.wxxtfxrmx.spritzreader.data.files.FilesDataSourceImpl
 import com.wxxtfxrmx.spritzreader.di.resources.ResourcesModule
@@ -27,8 +27,8 @@ class DataModule {
     fun providePreferenceDataSource(
         sharedPreferences: SharedPreferences,
         gson: Gson
-    ): PreferencesDataSource =
-        PreferencesDataSourceImpl(
+    ): Preferences =
+        PreferencesImpl(
             sharedPreferences,
             gson
         )

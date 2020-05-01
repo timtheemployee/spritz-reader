@@ -1,12 +1,12 @@
 package com.wxxtfxrmx.spritzreader.data.tabs
 
-import com.wxxtfxrmx.spritzreader.data.preferences.PreferencesDataSource
+import com.wxxtfxrmx.spritzreader.data.preferences.Preferences
 import com.wxxtfxrmx.spritzreader.domain.tabs.Tab
 import com.wxxtfxrmx.spritzreader.domain.tabs.TabsRepository
 import javax.inject.Inject
 
 class TabsRepositoryImpl @Inject constructor(
-    private val preferencesDataSource: PreferencesDataSource
+    private val preferences: Preferences
 ): TabsRepository {
 
     private companion object {
@@ -15,9 +15,9 @@ class TabsRepositoryImpl @Inject constructor(
     }
 
     override fun get(): Tab =
-        preferencesDataSource.get(TAB_KEY, Tab::class.java) ?: Tab.LIBRARY
+        preferences.get(TAB_KEY, Tab::class.java) ?: Tab.LIBRARY
 
     override fun set(tab: Tab) {
-        preferencesDataSource.set(TAB_KEY, tab)
+        preferences.set(TAB_KEY, tab)
     }
 }
