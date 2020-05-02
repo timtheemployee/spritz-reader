@@ -1,33 +1,39 @@
 package com.wxxtfxrmx.spritzreader.presentation.screens.library
 
 import android.graphics.BitmapFactory
+import android.graphics.BitmapShader
+import android.graphics.Paint
+import android.graphics.Shader
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import androidx.recyclerview.widget.RecyclerView
 import com.wxxtfxrmx.spritzreader.R
-import com.wxxtfxrmx.spritzreader.domain.books.Book
-import com.wxxtfxrmx.spritzreader.domain.books.Cover
+import com.wxxtfxrmx.spritzreader.domain.entity.Book
 import kotlinx.android.synthetic.main.library_item.view.*
 
-class BookViewHolder(parent: ViewGroup,
-                     private val onBookClickListener: (Book) -> Unit): RecyclerView.ViewHolder(
+class BookViewHolder(
+    parent: ViewGroup,
+    private val onBookClickListener: (Book) -> Unit
+) : RecyclerView.ViewHolder(
     LayoutInflater.from(parent.context).inflate(R.layout.library_item, null)
 ) {
 
-    fun bind(item: LibraryItem) {
+    fun bind(book: Book) {
         with(itemView) {
-            title.text = item.book.name
-            annotation.text = item.description.text
-            cover.showCover(item.cover)
+            title.text = book.name
+            annotation.text = book.description
+            cover.showCover(book.cover)
 
-            setOnClickListener { onBookClickListener(item.book) }
+            setOnClickListener { onBookClickListener(book) }
         }
     }
 
-    private fun ImageView.showCover(cover: Cover?) {
-        val bitmap = BitmapFactory.decodeFile(cover?.path)
+    private fun ImageView.showCover(cover: String?) {
+        clipToOutline = true
+        val bitmap = BitmapFactory.decodeFile(cover)
 
-        bitmap?.let(this::setImageBitmap)
+        bitmap?.let(::setImageBitmap)
     }
 }

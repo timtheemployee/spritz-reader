@@ -1,8 +1,8 @@
 package com.wxxtfxrmx.spritzreader.presentation.tabs
 
-import com.wxxtfxrmx.spritzreader.domain.tabs.GetCurrentTabUseCase
-import com.wxxtfxrmx.spritzreader.domain.tabs.SetCurrentTabUseCase
-import com.wxxtfxrmx.spritzreader.domain.tabs.Tab
+import com.wxxtfxrmx.spritzreader.domain.usecase.GetCurrentTabUseCase
+import com.wxxtfxrmx.spritzreader.domain.usecase.SetCurrentTabUseCase
+import com.wxxtfxrmx.spritzreader.domain.entity.Tab
 import com.wxxtfxrmx.spritzreader.navigation.routers.TabRouter
 import com.wxxtfxrmx.spritzreader.presentation.core.Presenter
 import javax.inject.Inject

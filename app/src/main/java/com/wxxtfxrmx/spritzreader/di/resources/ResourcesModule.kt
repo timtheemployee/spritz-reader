@@ -6,6 +6,7 @@ import android.os.Environment
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.wxxtfxrmx.spritzreader.BuildConfig
+import com.wxxtfxrmx.spritzreader.data.db.BooksSqliteStorage
 import com.wxxtfxrmx.spritzreader.di.AppScope
 import dagger.Module
 import dagger.Provides
@@ -37,4 +38,9 @@ class ResourcesModule {
     @Singleton
     fun provideGson(): Gson =
         GsonBuilder().create()
+
+    @Provides
+    @Singleton
+    fun provideBooksDatabaseStorage(context: Context): BooksSqliteStorage =
+        BooksSqliteStorage(context)
 }
