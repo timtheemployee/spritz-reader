@@ -1,11 +1,12 @@
 package com.wxxtfxrmx.spritzreader.presentation.core
 
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.cancel
+import kotlinx.coroutines.*
 import java.lang.ref.WeakReference
+import kotlin.coroutines.CoroutineContext
 
-abstract class Presenter<V: View>: CoroutineScope by MainScope() {
+//TODO Разобраться и сделать нормальную работу с корутинами
+abstract class Presenter<V: View>: CoroutineScope by MainScope(){
+
 
     private var viewRef: WeakReference<V>? = null
 

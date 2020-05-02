@@ -2,10 +2,10 @@ package com.wxxtfxrmx.spritzreader.di.ui
 
 import androidx.fragment.app.FragmentManager
 import com.wxxtfxrmx.spritzreader.R
-import com.wxxtfxrmx.spritzreader.data.tabs.TabsRepositoryImpl
+import com.wxxtfxrmx.spritzreader.data.datasource.TabsDataSourceImpl
 import com.wxxtfxrmx.spritzreader.di.FragmentScope
 import com.wxxtfxrmx.spritzreader.di.NestedFragmentScope
-import com.wxxtfxrmx.spritzreader.domain.tabs.TabsRepository
+import com.wxxtfxrmx.spritzreader.data.datasource.TabsDataSource
 import com.wxxtfxrmx.spritzreader.navigation.Navigator
 import com.wxxtfxrmx.spritzreader.navigation.tabs.TabsNavigator
 import com.wxxtfxrmx.spritzreader.presentation.screens.library.LibraryFragment
@@ -15,7 +15,6 @@ import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
-import javax.inject.Singleton
 
 @Module
 interface TabsModule {
@@ -39,7 +38,7 @@ interface TabsModule {
 
     @Binds
     @FragmentScope
-    fun bindTabsRepository(repository: TabsRepositoryImpl): TabsRepository
+    fun bindTabsRepository(repository: TabsDataSourceImpl): TabsDataSource
 
     @NestedFragmentScope
     @ContributesAndroidInjector(modules = [LibraryFragmentModule::class])

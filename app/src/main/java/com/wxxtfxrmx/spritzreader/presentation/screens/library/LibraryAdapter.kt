@@ -2,13 +2,13 @@ package com.wxxtfxrmx.spritzreader.presentation.screens.library
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.wxxtfxrmx.spritzreader.domain.books.Book
+import com.wxxtfxrmx.spritzreader.domain.entity.Book
 
 class LibraryAdapter(
     private val onBookClickListener: (Book) -> Unit
-): RecyclerView.Adapter<BookViewHolder>() {
+) : RecyclerView.Adapter<BookViewHolder>() {
 
-    var items: List<LibraryItem> = emptyList()
+    var items: List<Book> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()

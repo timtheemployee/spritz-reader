@@ -25,7 +25,7 @@ class ReadingFragment: BaseFragment(), ReadingView {
         presenter.attachView(this)
     }
 
-    override fun renderPage(name: String?) {
-        pageContent.text = name
+    override fun renderPage(content: String?) {
+        pageContent.text = content
     }
 }

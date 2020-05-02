@@ -1,10 +1,8 @@
 package com.wxxtfxrmx.spritzreader.di.ui
 
-import com.wxxtfxrmx.spritzreader.data.description.DescriptionRepositoryImpl
-import com.wxxtfxrmx.spritzreader.data.books.BooksRepositoryImpl
+import com.wxxtfxrmx.spritzreader.data.repository.BooksRepositoryImpl
 import com.wxxtfxrmx.spritzreader.di.NestedFragmentScope
-import com.wxxtfxrmx.spritzreader.domain.description.DescriptionRepository
-import com.wxxtfxrmx.spritzreader.domain.books.BooksRepository
+import com.wxxtfxrmx.spritzreader.domain.repository.BooksRepository
 import dagger.Binds
 import dagger.Module
 
@@ -15,7 +13,4 @@ interface LibraryFragmentModule {
     @NestedFragmentScope
     fun bindBooksRepository(repository: BooksRepositoryImpl): BooksRepository
 
-    @Binds
-    @NestedFragmentScope
-    fun bindDescriptionRepository(repository: DescriptionRepositoryImpl): DescriptionRepository
 }
