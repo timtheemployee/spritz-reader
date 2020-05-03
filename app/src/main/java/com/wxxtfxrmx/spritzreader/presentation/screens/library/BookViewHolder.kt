@@ -1,13 +1,9 @@
 package com.wxxtfxrmx.spritzreader.presentation.screens.library
 
 import android.graphics.BitmapFactory
-import android.graphics.BitmapShader
-import android.graphics.Paint
-import android.graphics.Shader
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import androidx.recyclerview.widget.RecyclerView
 import com.wxxtfxrmx.spritzreader.R
 import com.wxxtfxrmx.spritzreader.domain.entity.Book
@@ -23,7 +19,8 @@ class BookViewHolder(
     fun bind(book: Book) {
         with(itemView) {
             title.text = book.name
-            annotation.text = book.description
+            bookProgress.progress = book.progress
+            progressPercent.text = "${book.progress}%"
             cover.showCover(book.cover)
 
             setOnClickListener { onBookClickListener(book) }

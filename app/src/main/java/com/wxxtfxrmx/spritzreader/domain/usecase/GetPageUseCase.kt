@@ -19,7 +19,7 @@ class GetPageUseCase @Inject constructor() {
         val document = PdfDocument(reader)
 
         val extractStrategy = SimpleTextExtractionStrategy()
-        val page = document.getPage(book.lastPage)
+        val page = document.getPage(book.lastPage + 1)
         return PdfTextExtractor.getTextFromPage(page, extractStrategy)
     }
 }
