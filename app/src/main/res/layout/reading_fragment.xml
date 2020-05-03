@@ -2,17 +2,20 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:clipToPadding="false">
 
     <TextView
         android:id="@+id/pageContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/custom_font"
         android:textColor="@color/colorBlack"
-        android:paddingStart="@dimen/spacing_8"
-        android:paddingEnd="@dimen/spacing_8"
-        android:paddingTop="@dimen/spacing_16"
-        android:paddingBottom="@dimen/spacing_16"/>
+        android:fontFamily="@font/clarendon"
+        android:textStyle="bold"
+        android:paddingStart="@dimen/spacing_32"
+        android:paddingEnd="@dimen/spacing_32"
+        android:paddingTop="@dimen/spacing_32"
+        android:paddingBottom="@dimen/spacing_32"
+        android:includeFontPadding="false"/>
 
 </ScrollView>
