@@ -8,6 +8,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.wxxtfxrmx.spritzreader.R
 import com.wxxtfxrmx.spritzreader.presentation.core.BaseFragment
+import com.wxxtfxrmx.spritzreader.presentation.screens.settings.SettingsBottomSheetFragment
 import kotlinx.android.synthetic.main.reading_fragment.*
 import javax.inject.Inject
 
@@ -38,10 +39,18 @@ class ReadingFragment : BaseFragment(), ReadingView {
                 actionChips.isVisible = false
                 chipsVisibilityHandler.removeCallbacks(chipsVisibilityTask)
             } else if (event.action == MotionEvent.ACTION_UP) {
-                chipsVisibilityHandler.postDelayed(chipsVisibilityTask, 500L)
+                chipsVisibilityHandler.postDelayed(chipsVisibilityTask, 700L)
             }
 
             false
+        }
+
+        settingsChip.setOnClickListener {
+            val settingsFragment = SettingsBottomSheetFragment.newInstance()
+            settingsFragment.show(
+                childFragmentManager,
+                SettingsBottomSheetFragment::class.java.simpleName
+            )
         }
     }
 
