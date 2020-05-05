@@ -5,10 +5,10 @@ import com.wxxtfxrmx.spritzreader.domain.entity.Tab
 import javax.inject.Inject
 
 class SetCurrentTabUseCase @Inject constructor(
-    private val tabsDataSource: TabsDataSource
+	private val tabsDataSource: TabsDataSource
 ) {
 
-    operator fun invoke(tab: Tab) {
-        tabsDataSource.set(tab)
-    }
+	operator fun invoke(tab: Tab) {
+		tabsDataSource.set(tab)
+	}
 }

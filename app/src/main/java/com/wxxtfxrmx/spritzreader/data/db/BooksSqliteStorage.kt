@@ -10,19 +10,20 @@ import com.wxxtfxrmx.spritzreader.data.db.BooksDataBaseContract.SPRITZ_DATABASE
 import javax.inject.Inject
 
 class BooksSqliteStorage @Inject constructor(
-    context: Context
+	context: Context
 ) : SQLiteOpenHelper(
-    context,
-    SPRITZ_DATABASE,
-    null,
-    CONTRACT_VERSION
+	context,
+	SPRITZ_DATABASE,
+	null,
+	CONTRACT_VERSION
 ) {
-    override fun onCreate(db: SQLiteDatabase?) {
-        db?.execSQL(CREATE_TABLE_QUERY)
-    }
 
-    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        db?.execSQL(DROP_TABLE_QUERY)
-        onCreate(db)
-    }
+	override fun onCreate(db: SQLiteDatabase?) {
+		db?.execSQL(CREATE_TABLE_QUERY)
+	}
+
+	override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
+		db?.execSQL(DROP_TABLE_QUERY)
+		onCreate(db)
+	}
 }

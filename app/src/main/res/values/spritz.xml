@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="SpritzView">
-        <attr name="focusColor" format="color"/>
-        <attr name="textColor" format="color" />
-        <attr name="textSize" format="dimension" />
-    </declare-styleable>
+	<declare-styleable name="SpritzView">
+		<attr name="focusColor" format="color" />
+		<attr name="textColor" format="color" />
+		<attr name="textSize" format="dimension" />
+	</declare-styleable>
 
-    <style name="Widget.SpritzView.Dark" parent="@android:style/Widget">
-        <item name="focusColor">@color/colorPrimary</item>
-        <item name="textColor">@color/colorWhite</item>
-        <item name="textSize">32sp</item>
-    </style>
+	<style name="Widget.SpritzView.Dark" parent="@android:style/Widget">
+		<item name="focusColor">@color/colorPrimary</item>
+		<item name="textColor">@color/colorWhite</item>
+		<item name="textSize">32sp</item>
+	</style>
 
-    <style name="Widget.SpritzView.Light" parent="@android:style/Widget">
-        <item name="focusColor">@color/colorPrimary</item>
-        <item name="textColor">@color/colorBlack</item>
-        <item name="textSize">32sp</item>
-    </style>
+	<style name="Widget.SpritzView.Light" parent="@android:style/Widget">
+		<item name="focusColor">@color/colorPrimary</item>
+		<item name="textColor">@color/colorBlack</item>
+		<item name="textSize">32sp</item>
+	</style>
 </resources>

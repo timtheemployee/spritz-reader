@@ -15,32 +15,31 @@ import javax.inject.Singleton
 @Module
 class ResourcesModule {
 
-    @Provides
-    @Singleton
-    fun provideRootPath(): List<String?> =
-        listOf(
-            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).absolutePath,
-            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).absolutePath
-        )
+	@Provides
+	@Singleton
+	fun provideRootPath(): List<String?> =
+		listOf(
+			Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).absolutePath,
+			Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).absolutePath
+		)
 
-    @Provides
-    @Singleton
-    fun provideInternalStoragePath(@AppScope context: Context): String? =
-        context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)?.absolutePath
+	@Provides
+	@Singleton
+	fun provideInternalStoragePath(@AppScope context: Context): String? =
+		context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)?.absolutePath
 
+	@Provides
+	@Singleton
+	fun provideSharedPreferences(@AppScope context: Context): SharedPreferences =
+		context.getSharedPreferences(BuildConfig.SHARED_PREFERENCE_KEY, Context.MODE_PRIVATE)
 
-    @Provides
-    @Singleton
-    fun provideSharedPreferences(@AppScope context: Context): SharedPreferences =
-        context.getSharedPreferences(BuildConfig.SHARED_PREFERENCE_KEY, Context.MODE_PRIVATE)
+	@Provides
+	@Singleton
+	fun provideGson(): Gson =
+		GsonBuilder().create()
 
-    @Provides
-    @Singleton
-    fun provideGson(): Gson =
-        GsonBuilder().create()
-
-    @Provides
-    @Singleton
-    fun provideBooksDatabaseStorage(context: Context): BooksSqliteStorage =
-        BooksSqliteStorage(context)
+	@Provides
+	@Singleton
+	fun provideBooksDatabaseStorage(context: Context): BooksSqliteStorage =
+		BooksSqliteStorage(context)
 }

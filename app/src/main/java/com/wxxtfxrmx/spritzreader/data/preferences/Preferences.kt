@@ -6,24 +6,24 @@ import javax.inject.Inject
 
 interface Preferences {
 
-    fun <T> get(key: String, clazz: Class<T>): T?
+	fun <T> get(key: String, clazz: Class<T>): T?
 
-    fun set(key: String, any: Any)
+	fun set(key: String, any: Any)
 }
 
 class PreferencesImpl @Inject constructor(
-    private val sharedPreferences: SharedPreferences,
-    private val gson: Gson
-): Preferences {
+	private val sharedPreferences: SharedPreferences,
+	private val gson: Gson
+) : Preferences {
 
-    override fun <T> get(key: String, clazz: Class<T>): T? =
-        sharedPreferences.getString(key, null)
-            ?.let { gson.fromJson(it, clazz) }
+	override fun <T> get(key: String, clazz: Class<T>): T? =
+		sharedPreferences.getString(key, null)
+			?.let { gson.fromJson(it, clazz) }
 
-    override fun set(key: String, any: Any) {
-        sharedPreferences.edit().apply {
-            putString(key, gson.toJson(any))
-            apply()
-        }
-    }
+	override fun set(key: String, any: Any) {
+		sharedPreferences.edit().apply {
+			putString(key, gson.toJson(any))
+			apply()
+		}
+	}
 }

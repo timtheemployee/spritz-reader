@@ -11,19 +11,19 @@ import javax.inject.Inject
 
 class SpritzActivity : AppCompatActivity(), HasAndroidInjector {
 
-    @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
+	@Inject
+	lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
 
-    override fun androidInjector(): AndroidInjector<Any> =
-        dispatchingAndroidInjector
+	override fun androidInjector(): AndroidInjector<Any> =
+		dispatchingAndroidInjector
 
-    @Inject
-    lateinit var mainRouter: MainRouter
+	@Inject
+	lateinit var mainRouter: MainRouter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.spritz_activity)
-        mainRouter.openTabsScreen()
-    }
+	override fun onCreate(savedInstanceState: Bundle?) {
+		AndroidInjection.inject(this)
+		super.onCreate(savedInstanceState)
+		setContentView(R.layout.spritz_activity)
+		mainRouter.openTabsScreen()
+	}
 }

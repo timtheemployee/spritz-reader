@@ -1,18 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/coordinator"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:animateLayoutChanges="true"
+	android:clipToPadding="false"
+	android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/pageContent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/custom_font"
-        android:textColor="@color/colorBlack"
-        android:paddingStart="@dimen/spacing_8"
-        android:paddingEnd="@dimen/spacing_8"
-        android:paddingTop="@dimen/spacing_16"
-        android:paddingBottom="@dimen/spacing_16"/>
+	<androidx.core.widget.NestedScrollView
+		android:id="@+id/contentScrollContainer"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
 
-</ScrollView>
+		<TextView
+			android:id="@+id/pageContent"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:fontFamily="@font/clarendon"
+			android:includeFontPadding="false"
+			android:paddingStart="@dimen/spacing_32"
+			android:paddingTop="@dimen/spacing_32"
+			android:paddingEnd="@dimen/spacing_32"
+			android:paddingBottom="@dimen/spacing_32"
+			android:textColor="@color/colorBlack"
+			android:textStyle="bold" />
+
+	</androidx.core.widget.NestedScrollView>
+
+	<LinearLayout
+		android:id="@+id/actionChips"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:paddingBottom="@dimen/spacing_16"
+		app:layout_anchor="@id/pageContent"
+		app:layout_anchorGravity="bottom">
+
+		<com.google.android.material.chip.Chip
+			android:id="@+id/startReadingChip"
+			style="@style/Widget.MaterialComponents.Chip.Action"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="@dimen/spacing_32"
+			android:layout_marginEnd="@dimen/spacing_16"
+			android:layout_weight="1"
+			android:text="@string/reading_start"
+			android:textColor="@color/colorPrimaryDark"
+			app:chipBackgroundColor="@color/colorWhite"
+			app:chipEndPadding="@dimen/spacing_16"
+			app:chipIcon="@drawable/play_arrow"
+			app:chipIconTint="@color/colorPrimaryDark"
+			app:chipMinHeight="48dp"
+			app:chipStartPadding="@dimen/spacing_16"
+			app:chipStrokeColor="@color/colorPrimaryDark"
+			app:chipStrokeWidth="2dp" />
+
+		<com.google.android.material.chip.Chip
+			android:id="@+id/settingsChip"
+			style="@style/Widget.MaterialComponents.Chip.Action"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="@dimen/spacing_16"
+			android:layout_marginEnd="@dimen/spacing_32"
+			android:layout_weight="1"
+			android:text="@string/settings"
+			android:textColor="@color/colorPrimaryDark"
+			app:chipBackgroundColor="@color/colorWhite"
+			app:chipEndPadding="@dimen/spacing_16"
+			app:chipIcon="@drawable/settings"
+			app:chipIconTint="@color/colorPrimaryDark"
+			app:chipMinHeight="48dp"
+			app:chipStartPadding="@dimen/spacing_16"
+			app:chipStrokeColor="@color/colorPrimaryDark"
+			app:chipStrokeWidth="2dp"
+			app:layout_anchor="@id/pageContent" />
+	</LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -8,27 +8,27 @@ import java.io.File
 import javax.inject.Inject
 
 class BooksRepositoryImpl @Inject constructor(
-    private val filesDataSource: FilesDataSource,
-    private val booksLocalDataSource: BooksLocalDataSource
+	private val filesDataSource: FilesDataSource,
+	private val booksLocalDataSource: BooksLocalDataSource
 ) : BooksRepository {
 
-    override fun get(): List<Book> {
-        val files = filesDataSource.get()
-        val existingBooks = booksLocalDataSource.get()
+	override fun get(): List<Book> {
+		val files = filesDataSource.get()
+		val existingBooks = booksLocalDataSource.get()
 
-        return files.map { it.toBook(existingBooks) }
-    }
+		return files.map { it.toBook(existingBooks) }
+	}
 
-    private fun File.toBook(existingBooks: List<Book>) =
-        existingBooks.firstOrNull { it.path == absolutePath } ?: Book(
-            absolutePath,
-            name
-        )
+	private fun File.toBook(existingBooks: List<Book>) =
+		existingBooks.firstOrNull { it.path == absolutePath } ?: Book(
+			absolutePath,
+			name
+		)
 
-    override fun existing(book: Book): Boolean =
-        booksLocalDataSource.exists(book)
+	override fun existing(book: Book): Boolean =
+		booksLocalDataSource.exists(book)
 
-    override fun update(book: Book) {
-        booksLocalDataSource.update(book)
-    }
+	override fun update(book: Book) {
+		booksLocalDataSource.update(book)
+	}
 }

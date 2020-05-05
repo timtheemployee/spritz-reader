@@ -5,29 +5,29 @@ import javax.inject.Inject
 
 interface FilesDataSource {
 
-    fun get(): List<File>
+	fun get(): List<File>
 
 }
 
 class FilesDataSourceImpl @Inject constructor(
-    private val paths: List<String?>
-): FilesDataSource {
+	private val paths: List<String?>
+) : FilesDataSource {
 
-    private companion object {
-        const val PDF = ".pdf"
-    }
+	private companion object {
+		const val PDF = ".pdf"
+	}
 
-    override fun get(): List<File> {
+	override fun get(): List<File> {
 
-        val files = paths
-            .filterNotNull()
-            .map { File("$it/") }
+		val files = paths
+			.filterNotNull()
+			.map { File("$it/") }
 
-        return files.flatMap(::findFiles)
-    }
+		return files.flatMap(::findFiles)
+	}
 
-    private fun findFiles(file: File): List<File> =
-        file.walk()
-            .filter { it.absolutePath.endsWith(PDF) }
-            .toList()
+	private fun findFiles(file: File): List<File> =
+		file.walk()
+			.filter { it.absolutePath.endsWith(PDF) }
+			.toList()
 }

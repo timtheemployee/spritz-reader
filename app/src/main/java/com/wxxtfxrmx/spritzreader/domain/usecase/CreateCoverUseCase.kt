@@ -13,60 +13,60 @@ import java.io.FileOutputStream
 import javax.inject.Inject
 
 class CreateCoverUseCase @Inject constructor(
-    private val destination: String?
+	private val destination: String?
 ) {
 
-    private companion object {
-        const val WIDTH = 200
-        const val HEIGHT = 300
-    }
+	private companion object {
+		const val WIDTH = 200
+		const val HEIGHT = 300
+	}
 
-    suspend operator fun invoke(book: Book): Cover? =
-        withContext(Dispatchers.IO) {
-            val bookFile = File(book.path)
-            val descriptor =
-                ParcelFileDescriptor.open(bookFile, ParcelFileDescriptor.MODE_READ_ONLY)
-            val renderer = PdfRenderer(descriptor)
+	suspend operator fun invoke(book: Book): Cover? =
+		withContext(Dispatchers.IO) {
+			val bookFile = File(book.path)
+			val descriptor =
+				ParcelFileDescriptor.open(bookFile, ParcelFileDescriptor.MODE_READ_ONLY)
+			val renderer = PdfRenderer(descriptor)
 
-            val page = renderer.openPage(0)
+			val page = renderer.openPage(0)
 
-            val cover = createCover()
+			val cover = createCover()
 
-            page.render(cover, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY)
+			page.render(cover, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY)
 
-            val coverPath = saveCover(cover, book.name)
+			val coverPath = saveCover(cover, book.name)
 
-            page.close()
-            renderer.close()
+			page.close()
+			renderer.close()
 
-            coverPath?.let(::Cover)
-        }
+			coverPath?.let(::Cover)
+		}
 
-    private fun createCover(): Bitmap {
-        val config = Bitmap.Config.ARGB_8888
+	private fun createCover(): Bitmap {
+		val config = Bitmap.Config.ARGB_8888
 
-        return Bitmap.createBitmap(
-            WIDTH,
-            HEIGHT, config)
-    }
+		return Bitmap.createBitmap(
+			WIDTH,
+			HEIGHT, config)
+	}
 
-    private fun saveCover(cover: Bitmap, path: String): String? {
-        val coverPath = path.createName()
-        val result = File(destination, coverPath)
+	private fun saveCover(cover: Bitmap, path: String): String? {
+		val coverPath = path.createName()
+		val result = File(destination, coverPath)
 
-        val outputStream = ByteArrayOutputStream()
-        cover.compress(Bitmap.CompressFormat.PNG, 0, outputStream)
+		val outputStream = ByteArrayOutputStream()
+		cover.compress(Bitmap.CompressFormat.PNG, 0, outputStream)
 
-        val bytes = outputStream.toByteArray()
+		val bytes = outputStream.toByteArray()
 
-        val fileOutputStream = FileOutputStream(result)
+		val fileOutputStream = FileOutputStream(result)
 
-        fileOutputStream.write(bytes)
-        fileOutputStream.flush()
-        fileOutputStream.close()
+		fileOutputStream.write(bytes)
+		fileOutputStream.flush()
+		fileOutputStream.close()
 
-        return result.absolutePath
-    }
+		return result.absolutePath
+	}
 
-    private fun String.createName() = "$this.png"
+	private fun String.createName() = "$this.png"
 }

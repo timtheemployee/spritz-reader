@@ -6,10 +6,10 @@ import com.wxxtfxrmx.spritzreader.navigation.Navigator
 import javax.inject.Inject
 
 class LibraryRouter @Inject constructor(
-    private val navigator: Navigator
+	private val navigator: Navigator
 ) {
 
-    fun openReadingScreen() {
-        navigator.execute(Command.Open(Destination.ReadingScreen))
-    }
+	fun openReadingScreen() {
+		navigator.execute(Command.Open(Destination.ReadingScreen))
+	}
 }

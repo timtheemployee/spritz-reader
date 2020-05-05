@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/library"
-        android:icon="@drawable/library"
-        android:title="@string/library" />
+	<item
+		android:id="@+id/library"
+		android:icon="@drawable/library"
+		android:title="@string/library" />
 
-    <item
-        android:id="@+id/reading"
-        android:icon="@drawable/ic_electricity"
-        android:title="@string/reading" />
+	<item
+		android:id="@+id/reading"
+		android:icon="@drawable/ic_electricity"
+		android:title="@string/reading" />
 </menu>

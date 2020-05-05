@@ -16,71 +16,70 @@ import javax.inject.Inject
 
 class LibraryFragment : BaseFragment(), LibraryView {
 
-    companion object {
-        fun newInstance(): Fragment =
-            LibraryFragment()
+	companion object {
+		fun newInstance(): Fragment =
+			LibraryFragment()
 
-        private const val REQUEST_WRITE_PERMISSION = 666
-    }
+		private const val REQUEST_WRITE_PERMISSION = 666
+	}
 
-    override val layout = R.layout.library_fragment
+	override val layout = R.layout.library_fragment
 
-    @Inject
-    lateinit var presenter: LibraryPresenter
+	@Inject
+	lateinit var presenter: LibraryPresenter
 
-    private lateinit var adapter: LibraryAdapter
+	private lateinit var adapter: LibraryAdapter
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val gridLayoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        adapter = LibraryAdapter(presenter::onBookClicked)
-        booksList.layoutManager = gridLayoutManager
-        booksList.addItemDecoration(BookItemDecorator())
-        booksList.adapter = adapter
+	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+		super.onViewCreated(view, savedInstanceState)
+		val gridLayoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+		adapter = LibraryAdapter(presenter::onBookClicked)
+		booksList.layoutManager = gridLayoutManager
+		booksList.addItemDecoration(BookItemDecorator())
+		booksList.adapter = adapter
 
-        presenter.attachView(this)
-    }
+		presenter.attachView(this)
+	}
 
-    override fun showBooks(books: List<Book>) {
-        booksList.isVisible = true
-        noBooksLayout.isVisible = false
-        progress.isVisible = false
-        adapter.items = books
-    }
+	override fun showBooks(books: List<Book>) {
+		booksList.isVisible = true
+		noBooksLayout.isVisible = false
+		progress.isVisible = false
+		adapter.items = books
+	}
 
-    override fun showBooksNotFound() {
-        booksList.isVisible = false
-        progress.isVisible = false
-        noBooksLayout.isVisible = true
-    }
+	override fun showBooksNotFound() {
+		booksList.isVisible = false
+		progress.isVisible = false
+		noBooksLayout.isVisible = true
+	}
 
-    override fun showProgress() {
-        progress.isVisible = true
-        noBooksLayout.isVisible = false
-    }
+	override fun showProgress() {
+		progress.isVisible = true
+		noBooksLayout.isVisible = false
+	}
 
-    override fun hideProgress() {
-        progress.isVisible = false
-    }
+	override fun hideProgress() {
+		progress.isVisible = false
+	}
 
-    override fun requestWritePermission() {
-        requestPermission(
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            REQUEST_WRITE_PERMISSION
-        ) {
-            presenter.onWritePermissionGranted()
-        }
-    }
+	override fun requestWritePermission() {
+		requestPermission(
+			Manifest.permission.WRITE_EXTERNAL_STORAGE,
+			REQUEST_WRITE_PERMISSION
+		) {
+			presenter.onWritePermissionGranted()
+		}
+	}
 
+	override fun onRequestPermissionsResult(
+		requestCode: Int,
+		permissions: Array<out String>,
+		grantResults: IntArray
+	) {
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-
-        if (requestCode == REQUEST_WRITE_PERMISSION) {
-            presenter.onWritePermissionGranted(grantResults.isGranted())
-        }
-    }
+		if (requestCode == REQUEST_WRITE_PERMISSION) {
+			presenter.onWritePermissionGranted(grantResults.isGranted())
+		}
+	}
 }

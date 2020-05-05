@@ -4,7 +4,7 @@ import com.wxxtfxrmx.spritzreader.domain.entity.Book
 
 interface SelectedBookRepository {
 
-    fun set(book: Book)
+	fun set(book: Book)
 
-    fun get(): Book?
+	fun get(): Book?
 }

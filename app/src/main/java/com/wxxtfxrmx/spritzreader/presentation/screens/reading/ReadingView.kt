@@ -4,5 +4,5 @@ import com.wxxtfxrmx.spritzreader.presentation.core.View
 
 interface ReadingView : View {
 
-    fun renderPage(content: String?)
+	fun renderPage(content: String?)
 }

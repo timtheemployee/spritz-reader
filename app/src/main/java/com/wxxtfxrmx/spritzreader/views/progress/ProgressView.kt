@@ -5,13 +5,13 @@ import android.util.AttributeSet
 import android.widget.RelativeLayout
 
 class ProgressView @JvmOverloads constructor(
-    context: Context,
-    attrSet: AttributeSet,
-    defStyleAttr: Int = 0,
-    defStyleRes: Int = 0
-): RelativeLayout(context, attrSet, defStyleAttr, defStyleRes) {
+	context: Context,
+	attrSet: AttributeSet,
+	defStyleAttr: Int = 0,
+	defStyleRes: Int = 0
+) : RelativeLayout(context, attrSet, defStyleAttr, defStyleRes) {
 
-    init {
+	init {
 
-    }
+	}
 }
