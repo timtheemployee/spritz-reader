@@ -3,17 +3,17 @@ package com.wxxtfxrmx.spritzreader.views.progress
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
-import android.widget.RelativeLayout
 import android.widget.SeekBar
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.isVisible
 import com.wxxtfxrmx.spritzreader.R
 import kotlinx.android.synthetic.main.labeled_seekbar.view.*
 
 class LabeledSeekBar @JvmOverloads constructor(
 	context: Context,
 	attributeSet: AttributeSet? = null,
-	defStyleAttr: Int = 0,
-	defStyleRes: Int = 0
-) : RelativeLayout(context, attributeSet, defStyleAttr, defStyleRes) {
+	defStyleAttr: Int = 0
+) : ConstraintLayout(context, attributeSet, defStyleAttr) {
 
 	private companion object {
 		const val TAG = "LabeledSeekBar"
@@ -23,6 +23,8 @@ class LabeledSeekBar @JvmOverloads constructor(
 		setProgressChangedHandler { progress, _ ->
 			applyTranslationToLabel(progress)
 		}
+
+		setStartTrackingHandler { progressLabel.isVisible = true }
 	}
 
 	init {
@@ -32,16 +34,16 @@ class LabeledSeekBar @JvmOverloads constructor(
 	}
 
 	private fun applyTranslationToLabel(progress: Int) {
-		val difference = seekBar.right - seekBar.left
-		val differencePercent = difference * (progress / 100f)
-        val positive = progressLabel.x >= differencePercent
-		progressLabel.x = if (progressLabel.x + progressLabel.width < seekBar.x + seekBar.width && !positive) {
-			differencePercent - progressLabel.width / 2
-		} else {
-			progressLabel.x
+		val layoutParams = progressLabel.layoutParams as LayoutParams
+		layoutParams.horizontalBias = when {
+			progress <= 100  -> 0.05f
+			progress >= 1000 -> 0.95f
+			else             -> progress / 1000f
 		}
 
+		progressLabel.layoutParams = layoutParams
 		progressLabel.text = "$progress сл/м"
+		if (progressLabel.visibility == View.INVISIBLE) progressLabel.visibility = View.VISIBLE
 		invalidate()
 	}
 }

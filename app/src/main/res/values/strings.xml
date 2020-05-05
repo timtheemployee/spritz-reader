@@ -1,13 +1,15 @@
 <resources>
-    <string name="app_name">SpritzReader</string>
-    <string name="library">Библиотека</string>
-    <string name="recent">Недавнее</string>
-    <string name="bookmarks">Заметки</string>
-    <string name="not_found">Ничего не найдено</string>
-    <string name="reading">Чтение</string>
-    <string name="reading_start">Начать чтение</string>
-    <string name="settings">Настройки</string>
-    <string name="middle_speed_text_info">
+	<string name="app_name">SpritzReader</string>
+	<string name="library">Библиотека</string>
+	<string name="recent">Недавнее</string>
+	<string name="bookmarks">Заметки</string>
+	<string name="not_found">Ничего не найдено</string>
+	<string name="reading">Чтение</string>
+	<string name="reading_start">Начать чтение</string>
+	<string name="settings">Настройки</string>
+	<string name="middle_speed_text_info">
         Как выбрать оптимальное количество слов?\n\n
         Обычная скорость чтения на русском языке у взрослого человека лежит в пределах 120—180 слов в минуту, по опытным исследованиям средняя скорость равняется 201 слову в минуту (при разбросе значений от 60 до 378) при среднем проценте усвоения 52</string>
+	<string name="labeled_seekbar_min_bound">0</string>
+	<string name="labeled_seekbar_max_bound">1000</string>
 </resources>

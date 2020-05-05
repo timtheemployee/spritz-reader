@@ -1,30 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:parentTag="android.widget.LinearLayout">
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="88dp"
+	android:animateLayoutChanges="true"
+	tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
-    <TextView
-        android:id="@+id/progressLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/curved_progress_bar"
-        android:textColor="@color/colorBlack"
-        android:paddingStart="@dimen/spacing_8"
-        android:paddingEnd="@dimen/spacing_8"
-        android:paddingTop="@dimen/spacing_4"
-        android:paddingBottom="@dimen/spacing_4"
-        android:textSize="14sp"
-        tools:text="24 сл/м" />
+	<TextView
+		android:id="@+id/progressLabel"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="@dimen/spacing_16"
+		android:background="@drawable/curved_progress_bar"
+		android:paddingBottom="@dimen/spacing_4"
+		android:paddingEnd="@dimen/spacing_8"
+		android:paddingStart="@dimen/spacing_8"
+		android:paddingTop="@dimen/spacing_4"
+		android:textColor="@color/colorBlack"
+		android:textSize="14sp"
+		android:visibility="invisible"
+		app:layout_constraintBottom_toTopOf="@id/seekBar"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.05"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		tools:text="24 сл/м" />
 
-    <SeekBar
-        android:id="@+id/seekBar"
-        style="@style/Widget.AppCompat.SeekBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="@dimen/spacing_128dp"
-        android:progressDrawable="@drawable/seek_bar_background"
-        tools:progress="50" />
+	<TextView
+		android:id="@+id/startBound"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:paddingEnd="@dimen/spacing_4"
+		android:paddingStart="@dimen/spacing_16"
+		android:text="@string/labeled_seekbar_min_bound"
+		android:textColor="@color/colorBlack"
+		app:layout_constraintBottom_toBottomOf="@id/seekBar"
+		app:layout_constraintEnd_toStartOf="@id/seekBar"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="@id/seekBar" />
+
+	<TextView
+		android:id="@+id/endBound"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:paddingEnd="@dimen/spacing_16"
+		android:paddingStart="@dimen/spacing_4"
+		android:text="@string/labeled_seekbar_max_bound"
+		android:textColor="@color/colorBlack"
+		app:layout_constraintBottom_toBottomOf="@id/seekBar"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toEndOf="@id/seekBar"
+		app:layout_constraintTop_toTopOf="@id/seekBar" />
+
+	<androidx.appcompat.widget.AppCompatSeekBar
+		android:id="@+id/seekBar"
+		style="@style/Widget.AppCompat.SeekBar"
+		android:layout_width="@dimen/match_constraint"
+		android:layout_height="wrap_content"
+		android:max="1000"
+		android:progressTint="@color/colorPrimaryDark"
+		android:splitTrack="false"
+		android:thumb="@drawable/ic_electricity"
+		android:thumbTint="@color/colorPrimaryDark"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toStartOf="@id/endBound"
+		app:layout_constraintStart_toEndOf="@id/startBound"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_bias="0.8"
+		tools:progress="50" />
 </merge>
