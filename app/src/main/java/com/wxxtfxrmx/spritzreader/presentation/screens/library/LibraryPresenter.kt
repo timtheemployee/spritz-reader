@@ -12,55 +12,54 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class LibraryPresenter @Inject constructor(
-    private val getBooksUseCase: GetBooksUseCase,
-    private val createCoverUseCase: CreateCoverUseCase,
-    private val setSelectedBookUseCase: SetSelectedBookUseCase,
-    private val router: LibraryRouter
+	private val getBooksUseCase: GetBooksUseCase,
+	private val createCoverUseCase: CreateCoverUseCase,
+	private val setSelectedBookUseCase: SetSelectedBookUseCase,
+	private val router: LibraryRouter
 ) : Presenter<LibraryView>(), CoroutineScope {
 
 
-    private var items: List<Book> = emptyList()
+	private var items: List<Book> = emptyList()
 
-    override fun onFirstViewAttach() {
+	override fun onFirstViewAttach() {
 
-        view?.requestWritePermission()
-    }
+		view?.requestWritePermission()
+	}
 
-    private fun loadBooks() {
-        view?.showProgress()
+	private fun loadBooks() {
+		view?.showProgress()
 
-        launch(Dispatchers.Main) {
+		launch(Dispatchers.Main) {
 
-            items = getBooksUseCase().map { book ->
-                createCoverIfNotExists(book)
-            }
+			items = getBooksUseCase().map { book ->
+				createCoverIfNotExists(book)
+			}
 
-            view?.hideProgress()
-            if (items.isNotEmpty()) {
-                view?.showBooks(items)
-            } else {
-                view?.showBooksNotFound()
-            }
-        }
-    }
+			view?.hideProgress()
+			if (items.isNotEmpty()) {
+				view?.showBooks(items)
+			} else {
+				view?.showBooksNotFound()
+			}
+		}
+	}
 
-    private suspend fun createCoverIfNotExists(book: Book): Book =
-        if (book.cover.isNullOrEmpty()) {
-            val cover = createCoverUseCase(book)
-            book.copy(cover = cover?.path)
-        } else {
-            book
-        }
+	private suspend fun createCoverIfNotExists(book: Book): Book =
+		if (book.cover.isNullOrEmpty()) {
+			val cover = createCoverUseCase(book)
+			book.copy(cover = cover?.path)
+		} else {
+			book
+		}
 
+	fun onBookClicked(book: Book) {
+		setSelectedBookUseCase(book)
+			.also { router.openReadingScreen() }
+	}
 
-    fun onBookClicked(book: Book) {
-        setSelectedBookUseCase(book)
-            .also { router.openReadingScreen() }
-    }
-
-    fun onWritePermissionGranted(granted: Boolean = true) {
-        if (granted) {
-            loadBooks()
-        }
-    }
+	fun onWritePermissionGranted(granted: Boolean = true) {
+		if (granted) {
+			loadBooks()
+		}
+	}
 }

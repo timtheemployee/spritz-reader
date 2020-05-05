@@ -15,30 +15,29 @@ import dagger.android.ContributesAndroidInjector
 @Module
 interface SpritzActivityModule {
 
-    @Module
-    companion object {
+	@Module
+	companion object {
 
-        @Provides
-        @ActivityScope
-        @ParentFragmentManager
-        @JvmStatic
-        fun provideActivityFragmentManager(activity: SpritzActivity): FragmentManager =
-            activity.supportFragmentManager
+		@Provides
+		@ActivityScope
+		@ParentFragmentManager
+		@JvmStatic
+		fun provideActivityFragmentManager(activity: SpritzActivity): FragmentManager =
+			activity.supportFragmentManager
 
+		@Provides
+		@ActivityScope
+		@ParentContainerId
+		fun provideContainerId(): Int =
+			R.id.content
+	}
 
-        @Provides
-        @ActivityScope
-        @ParentContainerId
-        fun provideContainerId(): Int =
-            R.id.content
-    }
+	@Binds
+	@ActivityScope
+	@ParentNavigator
+	fun bindMainNavigator(navigator: MainNavigator): Navigator
 
-    @Binds
-    @ActivityScope
-    @ParentNavigator
-    fun bindMainNavigator(navigator: MainNavigator): Navigator
-
-    @FragmentScope
-    @ContributesAndroidInjector(modules = [TabsModule::class])
-    fun provideTabsFragment(): TabsFragment
+	@FragmentScope
+	@ContributesAndroidInjector(modules = [TabsModule::class])
+	fun provideTabsFragment(): TabsFragment
 }

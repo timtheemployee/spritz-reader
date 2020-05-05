@@ -9,45 +9,44 @@ import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
 import kotlinx.android.synthetic.main.navigation_fragment.*
-import java.lang.IllegalArgumentException
 import javax.inject.Inject
 
 class TabsFragment : BaseFragment(), TabsView, HasAndroidInjector {
 
-    companion object {
-        fun newInstance(): Fragment =
-            TabsFragment()
+	companion object {
+		fun newInstance(): Fragment =
+			TabsFragment()
 
-    }
+	}
 
-    @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
+	@Inject
+	lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
 
-    override fun androidInjector(): AndroidInjector<Any> =
-        dispatchingAndroidInjector
+	override fun androidInjector(): AndroidInjector<Any> =
+		dispatchingAndroidInjector
 
-    override val layout = R.layout.navigation_fragment
+	override val layout = R.layout.navigation_fragment
 
-    @Inject
-    lateinit var presenter: TabsPresenter
+	@Inject
+	lateinit var presenter: TabsPresenter
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        presenter.attachView(this)
+	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+		super.onViewCreated(view, savedInstanceState)
+		presenter.attachView(this)
 
-        navigation.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.library -> presenter.onLibraryClicked()
-                R.id.reading -> presenter.onReadingClicked()
-                else -> throw IllegalArgumentException("navigation not support $item, is it added in root navigation?")
-            }
+		navigation.setOnNavigationItemSelectedListener { item ->
+			when (item.itemId) {
+				R.id.library -> presenter.onLibraryClicked()
+				R.id.reading -> presenter.onReadingClicked()
+				else         -> throw IllegalArgumentException("navigation not support $item, is it added in root navigation?")
+			}
 
-            return@setOnNavigationItemSelectedListener true
-        }
-    }
+			return@setOnNavigationItemSelectedListener true
+		}
+	}
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        presenter.detachView()
-    }
+	override fun onDestroyView() {
+		super.onDestroyView()
+		presenter.detachView()
+	}
 }

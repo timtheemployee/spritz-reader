@@ -9,8 +9,8 @@ import dagger.Module
 @Module
 interface LibraryFragmentModule {
 
-    @Binds
-    @NestedFragmentScope
-    fun bindBooksRepository(repository: BooksRepositoryImpl): BooksRepository
+	@Binds
+	@NestedFragmentScope
+	fun bindBooksRepository(repository: BooksRepositoryImpl): BooksRepository
 
 }

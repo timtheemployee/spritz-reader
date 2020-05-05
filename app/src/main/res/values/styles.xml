@@ -1,20 +1,20 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
+	<!-- Base application theme. -->
+	<style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+		<!-- Customize your theme here. -->
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+		<item name="colorAccent">@color/colorAccent</item>
+	</style>
 
-    <style name="RoundedBottomSheetDialogTheme" parent="Theme.MaterialComponents.BottomSheetDialog">
-        <item name="bottomSheetStyle">@style/RoundedBottomSheetDialog</item>
-    </style>
+	<style name="RoundedBottomSheetDialogTheme" parent="Theme.MaterialComponents.BottomSheetDialog">
+		<item name="bottomSheetStyle">@style/RoundedBottomSheetDialog</item>
+	</style>
 
-    <style name="RoundedBottomSheetDialog" parent="Widget.Design.BottomSheet.Modal">
-        <item name="android:background">@drawable/settings_fragment_background</item>
-    </style>
+	<style name="RoundedBottomSheetDialog" parent="Widget.Design.BottomSheet.Modal">
+		<item name="android:background">@drawable/settings_fragment_background</item>
+	</style>
 </resources>
 
 

@@ -7,15 +7,15 @@ import com.wxxtfxrmx.spritzreader.domain.repository.SelectedBookRepository
 import javax.inject.Inject
 
 class SelectedBookRepositoryImpl @Inject constructor(
-    private val selectedBookDataSource: SelectedBookDataSource,
-    private val bookDataSource: BooksLocalDataSource
-): SelectedBookRepository {
+	private val selectedBookDataSource: SelectedBookDataSource,
+	private val bookDataSource: BooksLocalDataSource
+) : SelectedBookRepository {
 
-    override fun set(book: Book) {
-        selectedBookDataSource.set(book)
-        bookDataSource.update(book)
-    }
+	override fun set(book: Book) {
+		selectedBookDataSource.set(book)
+		bookDataSource.update(book)
+	}
 
-    override fun get(): Book? =
-        selectedBookDataSource.get()
+	override fun get(): Book? =
+		selectedBookDataSource.get()
 }

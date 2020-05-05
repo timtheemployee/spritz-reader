@@ -11,22 +11,22 @@ import javax.inject.Inject
 
 class GetPageUseCase @Inject constructor() {
 
-    private companion object {
-        val NEW_PARAGRAPH_REGEX = "\\.\\s{3,}".toRegex()
-    }
+	private companion object {
+		val NEW_PARAGRAPH_REGEX = "\\.\\s{3,}".toRegex()
+	}
 
-    operator fun invoke(book: Book): String {
-        val file = File(book.path)
+	operator fun invoke(book: Book): String {
+		val file = File(book.path)
 
-        require(file.exists()) { "File should be exists" }
+		require(file.exists()) { "File should be exists" }
 
-        val reader = PdfReader(file)
-        val document = PdfDocument(reader)
+		val reader = PdfReader(file)
+		val document = PdfDocument(reader)
 
-        val extractStrategy = SpritzTextExtractionStrategy()
-        val page = document.getPage(book.lastPage + 1)
-        return PdfTextExtractor.getTextFromPage(page, extractStrategy).replace("-", "").apply {
-            Log.e("SOME TAG", this)
-        }
-    }
+		val extractStrategy = SpritzTextExtractionStrategy()
+		val page = document.getPage(book.lastPage + 1)
+		return PdfTextExtractor.getTextFromPage(page, extractStrategy).replace("-", "").apply {
+			Log.e("SOME TAG", this)
+		}
+	}
 }

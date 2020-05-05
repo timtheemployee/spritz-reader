@@ -8,7 +8,7 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class ActivitiesModule {
 
-    @ActivityScope
-    @ContributesAndroidInjector(modules = [SpritzActivityModule::class])
-    abstract fun provideSpritzActivity(): SpritzActivity
+	@ActivityScope
+	@ContributesAndroidInjector(modules = [SpritzActivityModule::class])
+	abstract fun provideSpritzActivity(): SpritzActivity
 }

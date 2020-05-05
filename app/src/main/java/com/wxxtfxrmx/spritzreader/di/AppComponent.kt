@@ -12,23 +12,23 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-    modules = [
-        AndroidSupportInjectionModule::class,
-        AndroidInjectionModule::class,
-        DataModule::class,
-        ActivitiesModule::class
-    ]
+	modules = [
+		AndroidSupportInjectionModule::class,
+		AndroidInjectionModule::class,
+		DataModule::class,
+		ActivitiesModule::class
+	]
 )
 interface AppComponent {
 
-    @Component.Builder
-    interface Builder {
+	@Component.Builder
+	interface Builder {
 
-        @BindsInstance
-        fun context(@AppScope context: Context): Builder
+		@BindsInstance
+		fun context(@AppScope context: Context): Builder
 
-        fun build(): AppComponent
-    }
+		fun build(): AppComponent
+	}
 
-    fun inject(app: App)
+	fun inject(app: App)
 }

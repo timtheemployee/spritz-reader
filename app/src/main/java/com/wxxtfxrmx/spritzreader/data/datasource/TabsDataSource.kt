@@ -6,24 +6,24 @@ import javax.inject.Inject
 
 interface TabsDataSource {
 
-    fun get(): Tab
+	fun get(): Tab
 
-    fun set(tab: Tab)
+	fun set(tab: Tab)
 }
 
 class TabsDataSourceImpl @Inject constructor(
-    private val preferences: Preferences
-): TabsDataSource {
+	private val preferences: Preferences
+) : TabsDataSource {
 
-    private companion object {
+	private companion object {
 
-        const val TAB_KEY = "TAB_KEY"
-    }
+		const val TAB_KEY = "TAB_KEY"
+	}
 
-    override fun get(): Tab =
-        preferences.get(TAB_KEY, Tab::class.java) ?: Tab.LIBRARY
+	override fun get(): Tab =
+		preferences.get(TAB_KEY, Tab::class.java) ?: Tab.LIBRARY
 
-    override fun set(tab: Tab) {
-        preferences.set(TAB_KEY, tab)
-    }
+	override fun set(tab: Tab) {
+		preferences.set(TAB_KEY, tab)
+	}
 }

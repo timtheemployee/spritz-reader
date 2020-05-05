@@ -5,10 +5,10 @@ import com.wxxtfxrmx.spritzreader.domain.repository.SelectedBookRepository
 import javax.inject.Inject
 
 class SetSelectedBookUseCase @Inject constructor(
-    private val selectedBookRepository: SelectedBookRepository
+	private val selectedBookRepository: SelectedBookRepository
 ) {
 
-    operator fun invoke(book: Book) {
-        selectedBookRepository.set(book)
-    }
+	operator fun invoke(book: Book) {
+		selectedBookRepository.set(book)
+	}
 }

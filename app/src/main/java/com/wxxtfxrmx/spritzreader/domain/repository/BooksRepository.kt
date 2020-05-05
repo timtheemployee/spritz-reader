@@ -4,9 +4,9 @@ import com.wxxtfxrmx.spritzreader.domain.entity.Book
 
 interface BooksRepository {
 
-    fun get(): List<Book>
+	fun get(): List<Book>
 
-    fun existing(book: Book): Boolean
+	fun existing(book: Book): Boolean
 
-    fun update(book: Book)
+	fun update(book: Book)
 }
