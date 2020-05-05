@@ -9,7 +9,7 @@
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
     <com.wxxtfxrmx.spritzreader.views.progress.LabeledSeekBar
-        android:id="@+id/wordInSecond"
+        android:id="@+id/wordsInMinuteSeekbar"
         android:layout_width="@dimen/match_constraint"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,5 +26,5 @@
         android:textColor="@color/colorBlack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/wordInSecond" />
+        app:layout_constraintTop_toBottomOf="@id/wordsInMinuteSeekbar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

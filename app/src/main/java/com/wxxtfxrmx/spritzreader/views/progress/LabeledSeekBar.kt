@@ -15,9 +15,11 @@ class LabeledSeekBar @JvmOverloads constructor(
 	defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attributeSet, defStyleAttr) {
 
-	private companion object {
-		const val TAG = "LabeledSeekBar"
-	}
+	var progress: Int
+		set(value) {
+			seekBar.progress = value
+		}
+		get() = seekBar.progress
 
 	private val seekBarListener = LabeledSeekBarSlideListener().apply {
 		setProgressChangedHandler { progress, _ ->

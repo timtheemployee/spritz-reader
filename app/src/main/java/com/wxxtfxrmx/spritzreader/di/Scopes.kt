@@ -16,4 +16,8 @@ annotation class NestedFragmentScope
 
 @Scope
 @Retention(AnnotationRetention.RUNTIME)
+annotation class SettingsFragmentScope
+
+@Scope
+@Retention(AnnotationRetention.RUNTIME)
 annotation class ActivityScope
