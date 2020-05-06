@@ -111,11 +111,27 @@ class SpritzView @JvmOverloads constructor(
 				drawLine(width / 2f, 0f, width / 2f, verticalLineLength, linePaint)
 
 				drawLine(0f, height.toFloat(), width.toFloat(), height.toFloat(), linePaint)
-				drawLine(width / 2f, height.toFloat(), width / 2f, height - verticalLineLength, linePaint)
+				drawLine(
+					width / 2f,
+					height.toFloat(),
+					width / 2f,
+					height - verticalLineLength,
+					linePaint
+				)
 
 				drawText(spritzString.focus(), focusXPosition, focusYPosition, focusPaint)
-				drawText(spritzString.start(), focusXPosition - commonPaint.measureText(spritzString.start()), focusYPosition, commonPaint)
-				drawText(spritzString.end(), focusXPosition + commonPaint.measureText(spritzString.focus()), focusYPosition, commonPaint)
+				drawText(
+					spritzString.start(),
+					focusXPosition - commonPaint.measureText(spritzString.start()),
+					focusYPosition,
+					commonPaint
+				)
+				drawText(
+					spritzString.end(),
+					focusXPosition + commonPaint.measureText(spritzString.focus()),
+					focusYPosition,
+					commonPaint
+				)
 			}
 		}
 	}
