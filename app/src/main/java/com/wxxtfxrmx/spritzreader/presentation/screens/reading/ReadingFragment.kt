@@ -55,6 +55,10 @@ class ReadingFragment : BaseFragment(), ReadingView, HasAndroidInjector {
 				SettingsBottomSheetFragment::class.java.simpleName
 			)
 		}
+
+		startReadingChip.setOnClickListener {
+			presenter.onStartReadingClick()
+		}
 	}
 
 	override fun renderPage(content: String?) {

@@ -80,11 +80,16 @@ class BooksLocalDataSourceImpl @Inject constructor(
 		val selectionQuery = "$PATH LIKE ?"
 		val selectionArgs = arrayOf(book.path)
 
-		storage.writableDatabase.update(
+		storage.writableDatabase.delete(
 			TABLE_NAME,
-			contentValues,
 			selectionQuery,
 			selectionArgs
+		)
+
+		storage.writableDatabase.insert(
+			TABLE_NAME,
+			null,
+			contentValues
 		)
 	}
 

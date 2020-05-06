@@ -6,6 +6,7 @@ import com.wxxtfxrmx.spritzreader.SpritzActivity
 import com.wxxtfxrmx.spritzreader.di.*
 import com.wxxtfxrmx.spritzreader.navigation.Navigator
 import com.wxxtfxrmx.spritzreader.navigation.tabs.MainNavigator
+import com.wxxtfxrmx.spritzreader.presentation.spritz.SpritzFragment
 import com.wxxtfxrmx.spritzreader.presentation.tabs.TabsFragment
 import dagger.Binds
 import dagger.Module
@@ -40,4 +41,8 @@ interface SpritzActivityModule {
 	@FragmentScope
 	@ContributesAndroidInjector(modules = [TabsModule::class])
 	fun provideTabsFragment(): TabsFragment
+
+	@FragmentScope
+	@ContributesAndroidInjector
+	fun provideSpritzFragment(): SpritzFragment
 }
