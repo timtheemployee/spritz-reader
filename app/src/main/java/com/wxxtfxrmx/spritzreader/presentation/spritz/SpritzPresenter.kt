@@ -1,6 +1,5 @@
 package com.wxxtfxrmx.spritzreader.presentation.spritz
 
-import android.util.Log
 import com.wxxtfxrmx.spritzreader.domain.entity.Book
 import com.wxxtfxrmx.spritzreader.domain.entity.Config
 import com.wxxtfxrmx.spritzreader.domain.entity.Page
@@ -52,7 +51,7 @@ class SpritzPresenter @Inject constructor(
     }
 
     fun onBackPressed() {
-        val size = getBookSizeUseCase(book)
+        val size = getBookSizeUseCase(book) - 1
         val progress: Float = book.lastPage / size.toFloat() * 100
         book = book.copy(wordOnPage = wordIndexOnPage, progress = progress)
         setSelectedBookUseCase(book)
@@ -63,6 +62,12 @@ class SpritzPresenter @Inject constructor(
         if (!isRunning) return
 
         if (wordIndexOnPage == pageSize) {
+            val size = getBookSizeUseCase(book) - 1
+            if (book.lastPage == size) {
+                view?.showDisabledState()
+                return
+            }
+
             val bookLastPage = book.lastPage
             book = book.copy(lastPage = bookLastPage + 1)
             lastPage = getPageUseCase(book)

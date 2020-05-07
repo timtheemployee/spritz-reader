@@ -12,5 +12,7 @@ interface SpritzView : View {
 
 	fun renderWord(word: String, millis: Long)
 
+	fun showDisabledState()
+
 	fun exit()
 }

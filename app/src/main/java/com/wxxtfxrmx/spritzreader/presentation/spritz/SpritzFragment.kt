@@ -69,6 +69,11 @@ class SpritzFragment : BaseFragment(), SpritzView {
 		renderHandler.postDelayed(onRenderCompleteTask, millis)
 	}
 
+	override fun showDisabledState() {
+		showPausedState()
+		actionButton.isEnabled = false
+	}
+
 	override fun exit() {
 		renderHandler.removeCallbacks(onRenderCompleteTask)
 		requireActivity().onBackPressed()
