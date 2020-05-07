@@ -49,7 +49,7 @@ class BooksLocalDataSourceImpl @Inject constructor(
 					path = getString(cursor.getColumnIndexOrThrow(PATH)),
 					name = getString(cursor.getColumnIndexOrThrow(NAME)),
 					cover = getStringOrNull(cursor.getColumnIndexOrThrow(COVER)),
-					progress = getInt(cursor.getColumnIndex(PROGRESS)),
+					progress = getFloat(cursor.getColumnIndex(PROGRESS)),
 					description = getString(cursor.getColumnIndexOrThrow(DESCRIPTION)),
 					lastPage = getInt(cursor.getColumnIndexOrThrow(LAST_PAGE)),
 					wordOnPage = getInt(cursor.getColumnIndexOrThrow(WORD_ON_PAGE))

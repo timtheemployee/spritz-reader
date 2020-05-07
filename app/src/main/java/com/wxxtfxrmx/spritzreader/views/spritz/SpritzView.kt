@@ -99,6 +99,7 @@ class SpritzView @JvmOverloads constructor(
 			spritzString?.let { spritzString ->
 				val textHeight = focusPaint.fontMetrics.run { descent - ascent + leading }
 
+				spritzString.focus()
 				val focusTextWidth = focusPaint.measureText(spritzString.focus()) / 2
 				val focusXPosition = width / 2f - focusTextWidth
 				val focusYPosition = height / 2f + textHeight / 4

@@ -19,7 +19,7 @@ class BookViewHolder(
 	fun bind(book: Book) {
 		with(itemView) {
 			title.text = book.name
-			bookProgress.progress = book.progress
+			bookProgress.progress = book.progress.toInt()
 			progressPercent.text = "${book.progress}%"
 			cover.showCover(book.cover)
 
