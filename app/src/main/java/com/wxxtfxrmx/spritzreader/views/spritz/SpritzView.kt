@@ -99,6 +99,7 @@ class SpritzView @JvmOverloads constructor(
 			spritzString?.let { spritzString ->
 				val textHeight = focusPaint.fontMetrics.run { descent - ascent + leading }
 
+				spritzString.focus()
 				val focusTextWidth = focusPaint.measureText(spritzString.focus()) / 2
 				val focusXPosition = width / 2f - focusTextWidth
 				val focusYPosition = height / 2f + textHeight / 4
@@ -111,11 +112,27 @@ class SpritzView @JvmOverloads constructor(
 				drawLine(width / 2f, 0f, width / 2f, verticalLineLength, linePaint)
 
 				drawLine(0f, height.toFloat(), width.toFloat(), height.toFloat(), linePaint)
-				drawLine(width / 2f, height.toFloat(), width / 2f, height - verticalLineLength, linePaint)
+				drawLine(
+					width / 2f,
+					height.toFloat(),
+					width / 2f,
+					height - verticalLineLength,
+					linePaint
+				)
 
 				drawText(spritzString.focus(), focusXPosition, focusYPosition, focusPaint)
-				drawText(spritzString.start(), focusXPosition - commonPaint.measureText(spritzString.start()), focusYPosition, commonPaint)
-				drawText(spritzString.end(), focusXPosition + commonPaint.measureText(spritzString.focus()), focusYPosition, commonPaint)
+				drawText(
+					spritzString.start(),
+					focusXPosition - commonPaint.measureText(spritzString.start()),
+					focusYPosition,
+					commonPaint
+				)
+				drawText(
+					spritzString.end(),
+					focusXPosition + commonPaint.measureText(spritzString.focus()),
+					focusYPosition,
+					commonPaint
+				)
 			}
 		}
 	}

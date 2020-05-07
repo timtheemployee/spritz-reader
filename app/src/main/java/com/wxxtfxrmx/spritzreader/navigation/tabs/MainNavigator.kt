@@ -10,6 +10,7 @@ import com.wxxtfxrmx.spritzreader.navigation.Command.*
 import com.wxxtfxrmx.spritzreader.navigation.Destination
 import com.wxxtfxrmx.spritzreader.navigation.Destination.*
 import com.wxxtfxrmx.spritzreader.navigation.Navigator
+import com.wxxtfxrmx.spritzreader.presentation.spritz.SpritzFragment
 import com.wxxtfxrmx.spritzreader.presentation.tabs.TabsFragment
 import javax.inject.Inject
 
@@ -36,14 +37,16 @@ class MainNavigator @Inject constructor(
 
 		fragmentManager.beginTransaction().apply {
 			replace(container, fragment, destination::class.java.simpleName)
-			commitNow()
+			addToBackStack(destination::class.java.simpleName)
+			commit()
 		}
 	}
 
 	private fun getFragment(destination: Destination): Fragment {
 		return when (destination) {
-			is TabsScreen -> TabsFragment.newInstance()
-			else          -> throw IllegalArgumentException("Destination $destination is not root fragment. Check TabNavigator#getFragment")
+			is TabsScreen   -> TabsFragment.newInstance()
+			is SpritzScreen -> SpritzFragment.newInstance()
+			else            -> throw IllegalArgumentException("Destination $destination is not root fragment. Check TabNavigator#getFragment")
 		}
 	}
 }

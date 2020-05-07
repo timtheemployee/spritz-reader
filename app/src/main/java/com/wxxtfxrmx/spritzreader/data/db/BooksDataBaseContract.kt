@@ -3,7 +3,7 @@ package com.wxxtfxrmx.spritzreader.data.db
 object BooksDataBaseContract {
 
 	const val SPRITZ_DATABASE = "SPRITZ_DATABASE"
-	const val CONTRACT_VERSION = 1
+	const val CONTRACT_VERSION = 2
 
 	const val TABLE_NAME = "Books"
 	const val PATH = "path"

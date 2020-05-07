@@ -49,7 +49,7 @@ class BooksLocalDataSourceImpl @Inject constructor(
 					path = getString(cursor.getColumnIndexOrThrow(PATH)),
 					name = getString(cursor.getColumnIndexOrThrow(NAME)),
 					cover = getStringOrNull(cursor.getColumnIndexOrThrow(COVER)),
-					progress = getInt(cursor.getColumnIndex(PROGRESS)),
+					progress = getFloat(cursor.getColumnIndex(PROGRESS)),
 					description = getString(cursor.getColumnIndexOrThrow(DESCRIPTION)),
 					lastPage = getInt(cursor.getColumnIndexOrThrow(LAST_PAGE)),
 					wordOnPage = getInt(cursor.getColumnIndexOrThrow(WORD_ON_PAGE))
@@ -80,11 +80,16 @@ class BooksLocalDataSourceImpl @Inject constructor(
 		val selectionQuery = "$PATH LIKE ?"
 		val selectionArgs = arrayOf(book.path)
 
-		storage.writableDatabase.update(
+		storage.writableDatabase.delete(
 			TABLE_NAME,
-			contentValues,
 			selectionQuery,
 			selectionArgs
+		)
+
+		storage.writableDatabase.insert(
+			TABLE_NAME,
+			null,
+			contentValues
 		)
 	}
 
