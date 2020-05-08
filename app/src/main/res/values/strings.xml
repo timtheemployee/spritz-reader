@@ -12,4 +12,7 @@
         Обычная скорость чтения на русском языке у взрослого человека лежит в пределах 120—180 слов в минуту, по опытным исследованиям средняя скорость равняется 201 слову в минуту (при разбросе значений от 60 до 378) при среднем проценте усвоения 52</string>
 	<string name="labeled_seekbar_min_bound">0</string>
 	<string name="labeled_seekbar_max_bound">1000</string>
+	<string name="local_storage_explanation">Чтобы вы могли читать свои книги с высокой скоростью нам необходимо получить их список из локального хранилища</string>
+	<string name="ok">Понятно</string>
+	<string name="cancel">Нет</string>
 </resources>

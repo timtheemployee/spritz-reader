@@ -66,10 +66,11 @@ class LibraryFragment : BaseFragment(), LibraryView {
 	override fun requestWritePermission() {
 		requestPermission(
 			Manifest.permission.WRITE_EXTERNAL_STORAGE,
-			REQUEST_WRITE_PERMISSION
-		) {
-			presenter.onWritePermissionGranted()
-		}
+			REQUEST_WRITE_PERMISSION,
+			onInstantGrand = { presenter.onWritePermissionGranted(true) },
+			onPermissionDismiss = ::showBooksNotFound
+		)
+
 	}
 
 	override fun onRequestPermissionsResult(
