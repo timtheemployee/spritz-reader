@@ -32,6 +32,12 @@ android {
         }
     }
 
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "spritzreader_${variant.buildType.name}_${versionName}.apk"
+        }
+    }
+
     buildTypes.each {
         it.buildConfigField 'String', 'SHARED_PREFERENCE_KEY', "\"SPRITZ_PREFERENCES_KEY\""
     }
