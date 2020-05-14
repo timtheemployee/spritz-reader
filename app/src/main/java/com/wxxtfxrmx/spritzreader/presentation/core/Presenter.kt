@@ -5,9 +5,7 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 import java.lang.ref.WeakReference
 
-//TODO Разобраться и сделать нормальную работу с корутинами
 abstract class Presenter<V : View> : CoroutineScope by MainScope() {
-
 
 	private var viewRef: WeakReference<V>? = null
 
