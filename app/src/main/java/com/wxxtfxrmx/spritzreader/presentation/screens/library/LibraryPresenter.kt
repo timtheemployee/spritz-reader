@@ -30,7 +30,6 @@ class LibraryPresenter @Inject constructor(
 		view?.showProgress()
 
 		launch(Dispatchers.Main) {
-
 			items = getBooksUseCase().map { book ->
 				createCoverIfNotExists(book)
 			}

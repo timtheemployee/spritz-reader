@@ -32,7 +32,8 @@ class LibraryFragment : BaseFragment(), LibraryView {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-		val gridLayoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+		val gridLayoutManager = StaggeredGridLayoutManager(2,
+			StaggeredGridLayoutManager.VERTICAL)
 		adapter = LibraryAdapter(presenter::onBookClicked)
 		booksList.layoutManager = gridLayoutManager
 		booksList.addItemDecoration(BookItemDecorator())
@@ -83,4 +84,10 @@ class LibraryFragment : BaseFragment(), LibraryView {
 			presenter.onWritePermissionGranted(grantResults.isGranted())
 		}
 	}
+
+	override fun onDestroy() {
+		super.onDestroy()
+		presenter.detachView()
+	}
+
 }
