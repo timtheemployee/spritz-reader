@@ -10,6 +10,9 @@ android:
     - extra-android-support
     - addon-google_apis-google-29
 
+before_install:
+  - yes | sdkmanager "build-tools;29.0.2 Android SDK Build-Tools 29.0.2"
+
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -rf $HOME/.gradle/caches/*/plugin-resolution
