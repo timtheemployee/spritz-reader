@@ -5,16 +5,18 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.wxxtfxrmx.spritzreader.R
+import com.wxxtfxrmx.spritzreader.di.ui.LibraryViewModelFactory
 import com.wxxtfxrmx.spritzreader.domain.entity.Book
-import com.wxxtfxrmx.spritzreader.presentation.core.BaseFragment
 import com.wxxtfxrmx.spritzreader.presentation.core.isGranted
 import com.wxxtfxrmx.spritzreader.presentation.core.requestPermission
 import kotlinx.android.synthetic.main.library_fragment.*
 import javax.inject.Inject
 
-class LibraryFragment : BaseFragment(), LibraryView {
+class LibraryFragment : Fragment(R.layout.library_fragment) {
 
 	companion object {
 		fun newInstance(): Fragment =
@@ -23,55 +25,51 @@ class LibraryFragment : BaseFragment(), LibraryView {
 		private const val REQUEST_WRITE_PERMISSION = 666
 	}
 
-	override val layout = R.layout.library_fragment
-
 	@Inject
-	lateinit var presenter: LibraryPresenter
+	lateinit var factory: LibraryViewModelFactory
 
-	private lateinit var adapter: LibraryAdapter
+	private val viewModel: LibraryViewModel by viewModels(factoryProducer = { factory })
+
+	private val adapter: LibraryAdapter by lazy {
+		LibraryAdapter(viewModel::openBook)
+	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		val gridLayoutManager = StaggeredGridLayoutManager(2,
 			StaggeredGridLayoutManager.VERTICAL)
-		adapter = LibraryAdapter(presenter::onBookClicked)
 		booksList.layoutManager = gridLayoutManager
 		booksList.addItemDecoration(BookItemDecorator())
 		booksList.adapter = adapter
 
-		presenter.attachView(this)
+		viewModel.permissionAsked.observe(viewLifecycleOwner, Observer { asked ->
+			if (!asked) {
+				requestWritePermission()
+			} else {
+				viewModel.loadBooks()
+			}
+		})
+
+		viewModel.books.observe(viewLifecycleOwner, Observer { books ->
+			adapter.items = books
+		})
+
+		viewModel.progress.observe(viewLifecycleOwner, Observer { needShow ->
+			progress.isVisible = needShow
+		})
+
+		viewModel.booksStub.observe(viewLifecycleOwner, Observer { needShow ->
+			noBooksLayout.isVisible = needShow
+		})
 	}
 
-	override fun showBooks(books: List<Book>) {
-		booksList.isVisible = true
-		noBooksLayout.isVisible = false
-		progress.isVisible = false
-		adapter.items = books
-	}
-
-	override fun showBooksNotFound() {
-		booksList.isVisible = false
-		progress.isVisible = false
-		noBooksLayout.isVisible = true
-	}
-
-	override fun showProgress() {
-		progress.isVisible = true
-		noBooksLayout.isVisible = false
-	}
-
-	override fun hideProgress() {
-		progress.isVisible = false
-	}
-
-	override fun requestWritePermission() {
+	private fun requestWritePermission() {
 		requestPermission(
 			Manifest.permission.WRITE_EXTERNAL_STORAGE,
 			REQUEST_WRITE_PERMISSION,
-			onInstantGrand = { presenter.onWritePermissionGranted(true) },
-			onPermissionDismiss = ::showBooksNotFound
+			onInstantGrand = { viewModel.loadBooks() },
+			onPermissionDismiss = { viewModel.showNoBooksStub() }
 		)
-
 	}
 
 	override fun onRequestPermissionsResult(
@@ -81,13 +79,7 @@ class LibraryFragment : BaseFragment(), LibraryView {
 	) {
 
 		if (requestCode == REQUEST_WRITE_PERMISSION) {
-			presenter.onWritePermissionGranted(grantResults.isGranted())
+			viewModel.loadBooks()
 		}
 	}
-
-	override fun onDestroy() {
-		super.onDestroy()
-		presenter.detachView()
-	}
-
 }

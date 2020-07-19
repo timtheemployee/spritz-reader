@@ -21,7 +21,6 @@ class SpritzActivity : AppCompatActivity(), HasAndroidInjector {
 	lateinit var mainRouter: MainRouter
 
 	override fun onCreate(savedInstanceState: Bundle?) {
-		AndroidInjection.inject(this)
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.spritz_activity)
 		mainRouter.openTabsScreen()
